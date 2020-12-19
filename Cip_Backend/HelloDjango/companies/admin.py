@@ -7,8 +7,7 @@ from .models import Profile, Company
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('get_image', 'name', 'user', 'professional', 'public', 'register_date')
-    list_filter = ('is_partner', 'is_coach', 'is_investor', 'public', 'register_date')
-    readonly_fields = ('is_partner', 'is_coach', 'is_investor')
+    list_filter = ('public', 'register_date')
     list_editable = ('public',)
     search_fields = ('name', 'professional')
 

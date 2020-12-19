@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'cipwiuim',
     'projects',
     'companies',
     'blog',
     'forum',
     'contacts',
+    'map_points',
 ]
 
 MIDDLEWARE = [

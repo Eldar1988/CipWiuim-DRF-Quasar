@@ -4,6 +4,19 @@ from django.utils.safestring import mark_safe
 from .models import Post, Category, Comment, PostPhoto
 
 
+class PostCommentInline(admin.TabularInline):
+    """Комментарии на странице поста"""
+    model = Comment
+    exclude = ('email', 'parent', 'public')
+    readonly_fields = ('text', 'name')
+
+
+class PostPhotoInline(admin.TabularInline):
+    model = PostPhoto
+    exclude = ('order',)
+    readonly_fields = ('title',)
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('get_image', 'title', 'category', 'rating', 'future', 'public', 'order', 'slug', 'views')
@@ -12,6 +25,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     save_as = True
     save_on_top = True
+    inlines = [PostPhotoInline, PostCommentInline]
 
     def get_image(self, obj):
         return mark_safe(f'<img src="{obj.image}" width="50"')
@@ -32,7 +46,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'post', 'email', 'public', 'text', 'pub_date')
     list_editable = ('public',)
-    list_filter = ('public', 'pub_date')
+    list_filter = ('post', 'public', 'pub_date')
     search_fields = ('name', 'text')
     save_as = True
     save_on_top = True

@@ -59,7 +59,7 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
 
     def __str__(self):
-        return self.post
+        return self.name
 
     class Meta:
         verbose_name = 'Комментарий'

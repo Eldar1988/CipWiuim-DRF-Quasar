@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Project, DigitalIndicator, Benefit, Structure, QuestionAndAnswer, Review, ProjectVideo, ProjectPhoto
+from .models import Project, DigitalIndicator, Benefit, Structure, QuestionAndAnswer, Review, ProjectVideo, \
+    ProjectPhoto, ProjectFile
 
 
 @admin.register(Project)
@@ -33,7 +34,7 @@ class DigitalIndicatorAdmin(admin.ModelAdmin):
 class BenefitAdmin(admin.ModelAdmin):
     list_display = ('title', 'project', 'order', 'icon')
     list_filter = ('project', 'pub_date', 'update')
-    list_editable = ('icon', 'order')
+    list_editable = ('project', 'icon', 'order')
     search_fields = ('title',)
     save_on_top = True
     save_as = True
@@ -56,9 +57,9 @@ class StructureAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionAndAnswer)
 class QuestionAndAnswerAdmin(admin.ModelAdmin):
-    list_display = ('question', 'order', 'pub_date')
-    list_editable = ('order',)
-    list_filter = ('pub_date', 'update')
+    list_display = ('question', 'project', 'order', 'pub_date')
+    list_editable = ('order', 'project')
+    list_filter = ('project', 'pub_date', 'update')
     search_fields = ('title',)
     save_on_top = True
     save_as = True
@@ -76,7 +77,8 @@ class ReviewAdmin(admin.ModelAdmin):
     def get_image(self, obj):
         if obj.avatar:
             return mark_safe(f'<img src="{obj.avatar}" width="50"')
-        return mark_safe(f'<img src="https://cdn.pixabay.com/photo/2017/04/15/04/36/incognito-2231825_960_720.png" width="50"')
+        return mark_safe(
+            f'<img src="https://cdn.pixabay.com/photo/2017/04/15/04/36/incognito-2231825_960_720.png" width="50"')
 
     get_image.short_description = 'Аватар'
 
@@ -104,6 +106,16 @@ class ProjectPhotoAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src="{obj.url}" width="50"')
 
     get_image.short_description = 'Картинка'
+
+
+@admin.register(ProjectFile)
+class ProjectFileAdmin(admin.ModelAdmin):
+    list_display = ('title', 'project', 'order', 'pub_date')
+    list_filter = ('project', 'pub_date', 'update')
+    list_editable = ('project', 'order')
+    search_fields = ('title',)
+    save_on_top = True
+    save_as = True
 
 
 admin.site.site_title = 'CipWiuim'

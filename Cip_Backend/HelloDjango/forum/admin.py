@@ -22,6 +22,7 @@ class ThemeAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
     list_display = ('name', 'theme', 'public', 'pub_date')
     search_fields = ('name', 'text')
+    list_filter = ('theme', 'pub_date')
 
     save_as = True
     save_on_top = True

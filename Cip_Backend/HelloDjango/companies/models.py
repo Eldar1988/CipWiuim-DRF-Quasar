@@ -2,12 +2,13 @@ from django.contrib.auth.models import User
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 
+from cipwiuim.models import CIPPartnerForm
+
 
 class Profile(models.Model):
     """Профиль пользователя"""
-    is_partner = models.BooleanField('Партнер', default=False)
-    is_coach = models.BooleanField('Коуч', default=False)
-    is_investor = models.BooleanField('Инвестор', default=False)
+    partner_form = models.ForeignKey(CIPPartnerForm, on_delete=models.SET_NULL, null=True, blank=True,
+                                     verbose_name='Форма партнерства', related_name='profiles')
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True,
                                 verbose_name='Пользователь на сайте')
     name = models.CharField('ФИО', max_length=255, db_index=True)

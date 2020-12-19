@@ -178,3 +178,23 @@ class ProjectPhoto(models.Model):
         verbose_name_plural = 'Фото к проектам'
         ordering = ('order',)
 
+
+class ProjectFile(models.Model):
+    """Файл проекта"""
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True,
+                                verbose_name='Проект', related_name='files')
+    title = models.CharField('Название файла', max_length=255, db_index=True)
+    url = models.URLField('Ссылка на файл')
+    order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
+    pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
+    update = models.DateTimeField('Обновлено', auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Файл к проекту'
+        verbose_name_plural = 'Файлы к проектам'
+        ordering = ('order',)
+
+
