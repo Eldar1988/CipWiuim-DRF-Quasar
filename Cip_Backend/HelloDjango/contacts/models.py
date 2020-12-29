@@ -44,3 +44,4 @@ class Bot(models.Model):
     class Meta:
         verbose_name = 'Бот'
         verbose_name_plural = 'Боты'
+

@@ -1,107 +1,72 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpR fFf">
+
+    <q-header elevated class="bg-primary text-white header">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <!--        Logo   -->
+        <cip-logo/>
+        <!--        =============   -->
+        <q-space/>
+        <!--        Consult button   -->
+        <cip-consultation/>
+        <!--        ==============   -->
+        <!--        Account button   -->
+        <q-btn dense outline round icon="mdi-account-tie" class="hide-on-mobile q-mr-lg"/>
+        <!--        ==============   -->
+        <!--        Menu button   -->
+        <q-btn dense flat size="lg" round icon="mdi-menu" @click="right = !right"/>
+        <!--        ==============   -->
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+    <!--    Drawer menu   -->
+    <q-drawer show-if-above v-model="right" side="right" bordered>
+      <!-- drawer content -->
+      <!--      Mobile menu toolbar   -->
+      <q-toolbar class="bg-primary hide-on-desktop mobile-flex" style="height: 60px">
+        <q-toolbar-title class="text-white text-uppercase">
+          <div class="q-px-sm flex" style="align-items: center">
+            Меню
+            <q-space/>
+            <q-btn
+              icon="mdi-close"
+              flat
+              padding="0"
+              @click="right=false"
+            />
+          </div>
+        </q-toolbar-title>
+      </q-toolbar>
+      <!--      Consultation mobile   -->
+      <cip-consultation color="primary" :hideOnMobile="false"/>
+      <!--      Main menu   -->
+      <cip-main-menu-nav/>
     </q-drawer>
+    <!--    ===============   -->
 
     <q-page-container>
-      <router-view />
+      <router-view/>
     </q-page-container>
+
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
+import CipLogo from "components/header/cipLogo";
+import CipConsultation from "components/header/cipConsultation";
+import CipMainMenuNav from "components/header/cipMainMenuNav";
 
 export default {
-  name: 'MainLayout',
-  components: { EssentialLink },
-  data () {
+  components: {CipMainMenuNav, CipConsultation, CipLogo},
+  data() {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+      right: false
     }
   }
 }
 </script>
+
+<style lang="sass">
+.header
+  background: linear-gradient(145deg, #1976d2 11%, #003399 75%) !important
+</style>

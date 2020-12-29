@@ -14,11 +14,6 @@ class CIPAbout(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        if not self.pk and CIPAbout.objects.exists():
-            raise ValidationError('Данная модель может быть создана только один раз.')
-        return super(CIPAbout, self).save(*args, **kwargs)
-
     class Meta:
         verbose_name = 'Информация о компании'
         verbose_name_plural = 'Информация о компании'

@@ -9,6 +9,7 @@
 
 module.exports = function (/* ctx */) {
   return {
+    preFetch: true,
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
 
@@ -19,7 +20,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-      
+
       'axios',
     ],
 
@@ -31,7 +32,7 @@ module.exports = function (/* ctx */) {
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v5',
+      'mdi-v5',
       // 'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
@@ -77,6 +78,7 @@ cfg.module.rules.push({
     devServer: {
       https: false,
       port: 8080,
+      host: '192.168.0.199',
       open: true // opens browser window automatically
     },
 
@@ -108,7 +110,7 @@ cfg.module.rules.push({
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false
+      pwa: true
     },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -122,7 +124,7 @@ cfg.module.rules.push({
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#027be3',
+        theme_color: '#003399',
         icons: [
           {
             src: 'icons/icon-128x128.png',

@@ -1,1 +1,26 @@
-// app global css in Sass form
+@import "fonts"
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  color: $dark
+
+.q-toolbar
+  padding: 0 3px !important
+
+.hide-on-desktop
+  display: none
+
+
+@media screen and (max-width: 992px)
+  .hide-on-desktop
+    display: block
+
+  .hide-on-mobile
+    display: none !important
+
+  .mobile-flex
+    display: flex !important
