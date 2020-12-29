@@ -39,7 +39,7 @@ class Answer(models.Model):
     name = models.CharField('Имя автора', max_length=255, null=True, blank=True)
     text = models.TextField('Сообщение', max_length=7000)
     answer_for = models.ForeignKey('self', verbose_name='Ответ на сообщение от', on_delete=models.SET_NULL,
-                                   blank=True, null=True)
+                                   blank=True, null=True, related_name='parent')
     public = models.BooleanField('Опубликовать', default=True)
     pub_date = models.DateTimeField('Дата публикации',auto_now_add=True)
 
