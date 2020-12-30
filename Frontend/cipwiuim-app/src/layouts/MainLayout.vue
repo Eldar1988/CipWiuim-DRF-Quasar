@@ -44,7 +44,7 @@
     </q-drawer>
     <!--    ===============   -->
 
-    <q-page-container>
+    <q-page-container class="page-container">
       <router-view/>
     </q-page-container>
 
@@ -62,6 +62,12 @@ export default {
     return {
       right: false
     }
+  },
+  mounted() {
+    console.log(this.$store.getters.getMainData)
+  },
+  preFetch({ store }) {
+    return store.dispatch('fetchMainLayoutData')
   }
 }
 </script>
@@ -69,4 +75,8 @@ export default {
 <style lang="sass">
 .header
   background: linear-gradient(145deg, #1976d2 11%, #003399 75%) !important
+
+.page-container
+  max-width: 95%
+  margin: 0 auto
 </style>

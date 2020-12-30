@@ -16,6 +16,12 @@ name: "cipPageTitle",
 }
 </script>
 
-<style scoped>
+<style lang="sass">
+.page-title
+  font-size: 40px
+  font-weight: 700
 
+@media screen and (max-width: 992px)
+  .page-title
+    font-size: 30px
 </style>

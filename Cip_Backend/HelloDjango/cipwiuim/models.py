@@ -4,6 +4,38 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
+class HomePage(models.Model):
+    """Home page seo info"""
+    title = models.CharField('Title сайта', max_length=110)
+    description = models.TextField('Описание сайта', max_length=190)
+    logo = models.URLField('Ссылка на лого сайта')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Главная страница СЕО'
+        verbose_name_plural = 'Главная страцниа СЕО'
+
+
+class SliderSlide(models.Model):
+    """Slide for home Slider"""
+    title = models.CharField('Заголовок слайда', max_length=70)
+    text = models.TextField('Текст на слайдере')
+    image = models.URLField('Ссылка на изображение')
+    button_text = models.CharField('Текст на кнопке', max_length=50)
+    button_url = models.URLField('Ссылка кнопки')
+    order = models.PositiveSmallIntegerField('Порядковый номер слайда')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Слайд'
+        verbose_name_plural = 'Слайдер'
+        ordering = ('order',)
+
+
 class CIPAbout(models.Model):
     """О компании CIP WIUIM"""
     title = models.CharField('Заголовок', default='CipWiuim', max_length=255, db_index=True)
@@ -54,6 +86,8 @@ class CIPPartnerForm(models.Model):
                                          help_text='Будет выводится на главной странице')
     description = RichTextUploadingField('Полное описание')
     image = models.URLField('Ссылка на картинку')
+    banner = models.URLField('Ссылка на баннер', blank=True, null=True)
+    banner_title = models.CharField('Заголовок на баннере', max_length=100, blank=True, null=True)
     slug = models.SlugField('Slug', unique=True)
     order = models.PositiveSmallIntegerField('Порядковый номер')
 

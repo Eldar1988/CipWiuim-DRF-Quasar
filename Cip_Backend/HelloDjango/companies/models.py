@@ -11,7 +11,7 @@ class Profile(models.Model):
                                      verbose_name='Форма партнерства', related_name='profiles')
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True,
                                 verbose_name='Пользователь на сайте')
-    user_id = models.CharField('ID пользователя (Firebase)', max_length=255, null=True, blank=True)
+    uID = models.CharField('ID пользователя (Firebase)', max_length=255, null=True, blank=True)
     name = models.CharField('ФИО', max_length=255, db_index=True)
     phone = models.CharField('Телефон', max_length=30, null=True, blank=True)
     whatsapp = models.CharField('Whatsapp (необязательно)', max_length=30, blank=True, null=True)

@@ -6,7 +6,7 @@ class ProfilesListSerializer(serializers.ModelSerializer):
     """Profiles list"""
     class Meta:
         model = Profile
-        exclude = ('user', 'user_id', 'bio', 'public')
+        exclude = ('user', 'uID', 'bio', 'public')
 
 
 class CompanyListSerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class ProfileDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        exclude = ('user', 'user_id', 'public')
+        exclude = ('user', 'uID', 'public')
 
 
 class CompanyDetailSerializer(serializers.ModelSerializer):

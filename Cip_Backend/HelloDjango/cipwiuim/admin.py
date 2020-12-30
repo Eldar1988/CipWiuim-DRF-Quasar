@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from .models import CIPAbout, CIPReview, CIPPartner, CIPPartnerForm, PartnerFile, ForPartnerNotification, \
-    NotificationFile, Rule, CIPPhoto, CIPVideo, CIPQuestionAnswer
+    NotificationFile, Rule, CIPPhoto, CIPVideo, CIPQuestionAnswer, SliderSlide
 
 admin.site.register(CIPAbout)
 admin.site.register(CIPReview)
@@ -75,5 +75,16 @@ class PhotoAdmin(admin.ModelAdmin):
 
     def get_image(self, obj):
         return mark_safe(f'<img src="{obj.url}" width="50"')
+
+    get_image.short_description = 'Фото'
+
+
+@admin.register(SliderSlide)
+class SliderSlideAdmin(admin.ModelAdmin):
+    list_display = ('get_image', 'title', 'order')
+    list_editable = ('order',)
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src="{obj.image}" width="50"')
 
     get_image.short_description = 'Фото'

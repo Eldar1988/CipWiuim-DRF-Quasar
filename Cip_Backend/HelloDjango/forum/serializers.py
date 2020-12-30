@@ -1,12 +1,12 @@
 from rest_framework import serializers
 from .models import Theme, Answer
 from companies.serializers import ProfilesListSerializer
-from companies.serializers import ProfileDetailSerializer
+from companies.serializers import ProfilesListSerializer
 
 
 class ThemesListSerializer(serializers.ModelSerializer):
     """Themes list"""
-    author = ProfileDetailSerializer(many=False)
+    author = ProfilesListSerializer(many=False)
 
     class Meta:
         model = Theme

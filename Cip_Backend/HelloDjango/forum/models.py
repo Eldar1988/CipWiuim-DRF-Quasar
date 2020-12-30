@@ -16,6 +16,7 @@ class Theme(models.Model):
     order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
     slug = models.SlugField('Slug', unique=True,
                             help_text='только маленькие латинские буквы, без пробелов и спец символов')
+    public = models.BooleanField('Опубликовать', default=False)
     views = models.PositiveSmallIntegerField('Количество просмотров', default=0)
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     update = models.DateTimeField('Обновлено', auto_now=True)

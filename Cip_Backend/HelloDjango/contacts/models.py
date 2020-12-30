@@ -6,7 +6,7 @@ class Contact(models.Model):
     address = models.TextField('Адрес компании')
     email = models.EmailField('Email')
     phone = models.CharField('Телефон компании', max_length=20)
-    whatsapp = models.CharField('Whatsapp', max_length=20)
+    whatsapp = models.CharField('Whatsapp', max_length=20, help_text='В формате: 7707855****')
 
     def __str__(self):
         return self.phone

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axiosInstance from 'axios'
 
 // import example from './module-example'
 
@@ -16,8 +17,34 @@ Vue.use(Vuex)
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
-    modules: {
-      // example
+
+    state: () => ({
+      serverURL: 'http://192.168.0.199:8000',
+      mainData: []
+    }),
+
+    mutations: {
+      setMainLayoutData(state, data) {
+        state.mainData = data
+      }
+    },
+
+    actions: {
+      fetchMainLayoutData({ commit }) {
+        return axiosInstance.get(`${this.getters.getServerURL}`)
+          .then(({ data }) => {
+            commit('setMainLayoutData', data)
+          })
+      }
+    },
+
+    getters: {
+      getServerURL(state) {
+        return state.serverURL
+      },
+      getMainData(state) {
+        return state.mainData
+      }
     },
 
     // enable strict mode (adds overhead!)
