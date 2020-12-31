@@ -7,6 +7,7 @@
       navigation
       navigation-position="top"
       infinite
+      autoplay
       class="home-slider rounded-borders shadow-5"
     >
       <q-carousel-slide
@@ -34,7 +35,7 @@
             :label="slide.button_text"
             color="secondary"
             :to="slide.button_url"
-            class="q-px-sm"
+            class="q-px-sm my-shadow bg-gradient-1"
           />
         </div>
       </q-carousel-slide>

@@ -47,6 +47,9 @@
     <q-page-container class="page-container">
       <router-view/>
     </q-page-container>
+    <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[8, 8]">
+      <q-btn fab size="sm" icon="keyboard_arrow_up" color="primary" />
+    </q-page-scroller>
 
   </q-layout>
 </template>
