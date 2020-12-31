@@ -4,6 +4,8 @@ from .models import Category, Post, Comment, PostPhoto
 
 class PostsListSerializer(serializers.ModelSerializer):
     """Posts list"""
+    category = serializers.SlugRelatedField(slug_field='title', read_only=True)
+
     class Meta:
         model = Post
         exclude = ('body', 'future', 'public', 'order', 'update')

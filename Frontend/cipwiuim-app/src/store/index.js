@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import main from './modules/main'
+import blog from './modules/blog'
 
 // import example from './module-example'
 
@@ -34,7 +35,8 @@ export default function (/* { ssrContext } */) {
       }
     },
     modules: {
-      main
+      main,
+      blog
     },
 
     // enable strict mode (adds overhead!)

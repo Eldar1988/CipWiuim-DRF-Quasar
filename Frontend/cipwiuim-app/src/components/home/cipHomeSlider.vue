@@ -10,35 +10,35 @@
       autoplay
       class="home-slider rounded-borders shadow-5"
     >
-      <q-carousel-slide
-        v-for="(slide, index) in slides"
-        :key="slide.id"
-        :name="slide.id"
-        :img-src="slide.image"
-        class="img-overlay"
-      >
-        <div class="slider-text">
-          <h1
-            v-if="index === 0"
-            class="slide-title"
-          >
-            {{ slide.title }}
-          </h1>
-          <h2
-            v-else
-            class="slide-title"
-          >
-            {{ slide.title }}
-          </h2>
-          <p>{{ slide.text }}</p>
-          <q-btn
-            :label="slide.button_text"
-            color="secondary"
-            :to="slide.button_url"
-            class="q-px-sm my-shadow bg-gradient-1"
-          />
-        </div>
-      </q-carousel-slide>
+        <q-carousel-slide
+          v-for="(slide, index) in slides"
+          :key="slide.id"
+          :name="slide.id"
+          :img-src="slide.image"
+          class="img-overlay"
+        >
+          <div class="slider-text">
+            <h1
+              v-if="index === 0"
+              class="slide-title"
+            >
+              {{ slide.title }}
+            </h1>
+            <h2
+              v-else
+              class="slide-title"
+            >
+              {{ slide.title }}
+            </h2>
+            <p>{{ slide.text }}</p>
+            <q-btn
+              :label="slide.button_text"
+              color="secondary"
+              :to="slide.button_url"
+              class="q-px-sm my-shadow bg-gradient-1"
+            />
+          </div>
+        </q-carousel-slide>
     </q-carousel>
   </div>
 </template>
