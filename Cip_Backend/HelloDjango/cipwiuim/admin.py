@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from .models import CIPAbout, CIPReview, CIPPartner, CIPPartnerForm, PartnerFile, ForPartnerNotification, \
-    NotificationFile, Rule, CIPPhoto, CIPVideo, CIPQuestionAnswer, SliderSlide
+    NotificationFile, Rule, CIPPhoto, CIPVideo, CIPQuestionAnswer, SliderSlide, HomePage
 
 admin.site.register(CIPAbout)
 admin.site.register(CIPReview)
@@ -10,6 +10,7 @@ admin.site.register(CIPPartner)
 admin.site.register(Rule)
 admin.site.register(CIPVideo)
 admin.site.register(CIPQuestionAnswer)
+admin.site.register(HomePage)
 
 
 class PartnerFileInline(admin.TabularInline):

@@ -24,7 +24,7 @@ class SliderSlide(models.Model):
     text = models.TextField('Текст на слайдере')
     image = models.URLField('Ссылка на изображение')
     button_text = models.CharField('Текст на кнопке', max_length=50)
-    button_url = models.URLField('Ссылка кнопки')
+    button_url = models.CharField('Ссылка кнопки', max_length=255, null=True, blank=True)
     order = models.PositiveSmallIntegerField('Порядковый номер слайда')
 
     def __str__(self):

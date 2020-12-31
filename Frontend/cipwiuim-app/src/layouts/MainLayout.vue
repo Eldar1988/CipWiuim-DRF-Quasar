@@ -64,7 +64,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.getters.getMainData)
   },
   preFetch({ store }) {
     return store.dispatch('fetchMainLayoutData')
@@ -77,6 +76,10 @@ export default {
   background: linear-gradient(145deg, #1976d2 11%, #003399 75%) !important
 
 .page-container
-  max-width: 95%
-  margin: 0 auto
+  max-width: 98%
+  margin: 15px auto 0
+
+@media screen and (max-width: 650px)
+  .page-container
+    margin: 5px auto 0
 </style>

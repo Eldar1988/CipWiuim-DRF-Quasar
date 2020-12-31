@@ -11,7 +11,7 @@
 
   <q-dialog v-model="dialog" >
     <q-card style="width: 400px; max-width: 90vw;">
-      <q-toolbar class="bg-primary text-white">
+      <q-toolbar class="">
         <q-toolbar-title><span class="text-weight-bold q-ml-sm">Консультация</span></q-toolbar-title>
         <q-btn flat round dense icon="mdi-close" v-close-popup />
       </q-toolbar>

@@ -13,8 +13,8 @@ from contacts.serializers import ContactsSerializer, SocialNetworksSerializer
 from forum.models import Theme
 from forum.serializers import ThemesListSerializer
 
-from .models import CIPPartnerForm
-from .serializers import CIPPartnerFormsListSerializer
+from .models import CIPPartnerForm, SliderSlide, HomePage
+from .serializers import CIPPartnerFormsListSerializer, SlidesSerializer, HomePageMetaSerializer
 
 
 class MainLayoutData(APIView):
@@ -22,6 +22,14 @@ class MainLayoutData(APIView):
     def get(self, request):
 
         response_data = {}
+
+        home_meta = HomePage.objects.last()
+        home_meta_serializer = HomePageMetaSerializer(home_meta, many=False)
+        response_data['homeMeta'] = home_meta_serializer.data
+
+        slides = SliderSlide.objects.all()
+        slides_serializer = SlidesSerializer(slides, many=True)
+        response_data['slides'] = slides_serializer.data
 
         projects = Project.objects.filter(public=True)
         projects_serializer = ProjectsListSerializer(projects, many=True)

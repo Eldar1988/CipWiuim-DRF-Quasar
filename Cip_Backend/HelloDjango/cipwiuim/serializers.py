@@ -1,6 +1,20 @@
 from rest_framework import serializers
 from .models import CIPAbout, CIPReview, CIPPartner, CIPPartnerForm, PartnerFile, ForPartnerNotification, \
-    NotificationFile, CIPQuestionAnswer, Rule, CIPPhoto, CIPVideo
+    NotificationFile, CIPQuestionAnswer, Rule, CIPPhoto, CIPVideo, SliderSlide, HomePage
+
+
+class HomePageMetaSerializer(serializers.ModelSerializer):
+    """For home page meta info"""
+    class Meta:
+        model = HomePage
+        fields = '__all__'
+
+
+class SlidesSerializer(serializers.ModelSerializer):
+    """For slider slides"""
+    class Meta:
+        model = SliderSlide
+        fields = '__all__'
 
 
 class CIPAboutSerializer(serializers.ModelSerializer):
