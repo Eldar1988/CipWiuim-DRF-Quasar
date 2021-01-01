@@ -73,7 +73,8 @@ class PostPhoto(models.Model):
                              verbose_name='Пост', related_name='images')
     title = models.CharField('Название фото', max_length=255, db_index=True)
     url = models.URLField('Ссылка на фото')
-    order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
+    order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки',
+                                             null=True, blank=True)
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     update = models.DateTimeField('Обновлено', auto_now=True)
 

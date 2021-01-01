@@ -20,7 +20,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
 
     state: () => ({
-      serverURL: 'http://192.168.0.199:8000',
+      // serverURL: 'http://192.168.0.199:8000',
+      serverURL: 'http://0.0.0.0:8000',
     }),
 
     mutations: {
