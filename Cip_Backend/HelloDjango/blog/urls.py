@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.PostsListView.as_view())
+    path('get_future_posts/', views.FuturePostsListView.as_view())
 ]

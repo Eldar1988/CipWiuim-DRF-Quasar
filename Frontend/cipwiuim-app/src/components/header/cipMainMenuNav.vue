@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <!--    Menu   -->
     <q-list separator class="rounded-borders text-dark text-uppercase letter-spacing-5 text-weight-bold">
       <!--    home  -->
       <q-item
@@ -166,7 +167,7 @@
         <q-item-section>Контакты</q-item-section>
       </q-item>
     </q-list>
-
+    <!--    ===================   -->
     <!--    Partner Banners   -->
     <q-list class="q-mt-md">
       <!--    partner forms   -->

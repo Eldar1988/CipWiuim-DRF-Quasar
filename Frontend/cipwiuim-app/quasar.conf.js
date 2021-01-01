@@ -78,7 +78,7 @@ cfg.module.rules.push({
     devServer: {
       https: false,
       port: 8080,
-      // host: '192.168.0.199',
+      host: '192.168.0.199',
       open: true // opens browser window automatically
     },
 

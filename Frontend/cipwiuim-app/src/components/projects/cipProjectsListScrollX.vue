@@ -22,7 +22,7 @@
       ref="scrollFutureProducts"
       horizontal
       class="full-width q-mt-md"
-      style="height: 550px; width: 100%"
+      style="height: 450px; width: 100%"
       :thumb-style="{ display: 'none' }"
     >
       <div class="row no-wrap">

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import main from './modules/main'
 import blog from './modules/blog'
+import testimonials from './modules/testimonials'
 
 // import example from './module-example'
 
@@ -20,8 +21,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
 
     state: () => ({
-      // serverURL: 'http://192.168.0.199:8000',
-      serverURL: 'http://0.0.0.0:8000',
+      serverURL: 'http://192.168.0.199:8000',
+      // serverURL: 'http://0.0.0.0:8000',
     }),
 
     mutations: {
@@ -37,7 +38,8 @@ export default function (/* { ssrContext } */) {
     },
     modules: {
       main,
-      blog
+      blog,
+      testimonials
     },
 
     // enable strict mode (adds overhead!)

@@ -24,6 +24,7 @@
         color="primary"
         class="full-width bg-gradient-1"
         icon-right="mdi-chevron-right"
+        :to="`/projects/${project.slug}`"
       >
         Подробнее
       </q-btn>

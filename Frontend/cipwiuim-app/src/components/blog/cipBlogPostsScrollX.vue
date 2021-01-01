@@ -19,20 +19,20 @@
     <!--    ==============   -->
     <!--    Scroll Area   -->
     <q-scroll-area
-      ref="scrollFutureProducts"
+      ref="scrollPosts"
       horizontal
       class="full-width q-mt-md"
-      style="height: 550px; width: 100%"
+      style="height: 450px; width: 100%"
       :thumb-style="{ display: 'none' }"
     >
       <div class="row no-wrap">
         <div
-          v-for="project in projects"
-          :key="project.id"
+          v-for="post in posts"
+          :key="post.id"
           class="product-wrapper"
           style="width: 325px; padding: 0 4px"
         >
-          <cip-project-card :project="project" />
+          <cip-post-card :post="post" />
         </div>
       </div>
     </q-scroll-area>
@@ -41,32 +41,39 @@
 </template>
 
 <script>
+import CipPostCard from "components/blog/cipPostCard";
 export default {
   name: "cipBlogPostsScrollX",
+  components: {CipPostCard},
   data() {
     return {
       position: 0,
+      posts: []
     }
   },
-  computed: {
-    projects() {
-      return this.$store.getters.getMainData.projects
-    }
+  mounted() {
+    this.loadPosts()
   },
   methods: {
+    async loadPosts() {
+      this.posts = await this.$axios.get(`${this.$store.getters.getServerURL}/blog/get_future_posts`)
+      .then(({ data }) => {
+        return data
+      })
+    },
     // Скролл вправо
     scrollRight() {
       // Проверка: количество карточек * ширину экрана (98% ширина контейнера)
-      if(this.position < this.projects.length * 320 - (window.innerWidth * 0.98)) {
+      if(this.position < this.posts.length * 320 - (window.innerWidth * 0.98)) {
         this.position += 325
-        this.$refs.scrollFutureProducts.setScrollPosition(this.position, 500)
+        this.$refs.scrollPosts.setScrollPosition(this.position, 500)
       }
     },
     // Левый скролл
     scrollLeft() {
       if (this.position !== 0) {
         this.position = this.position - 325
-        this.$refs.scrollFutureProducts.setScrollPosition(this.position, 500)
+        this.$refs.scrollPosts.setScrollPosition(this.position, 500)
       }
     }
   }
