@@ -5,10 +5,6 @@
         <cip-post-card :post="post" />
       </splide-slide>
     </splide>
-
-
-
-
   </div>
 </template>
 
