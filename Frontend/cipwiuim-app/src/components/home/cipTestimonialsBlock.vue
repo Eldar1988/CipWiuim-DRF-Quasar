@@ -6,7 +6,7 @@
           {{ title }}
         </h3>
       </div>
-      <cip-testimonials-cards :testimonials="testimonials" />
+      <cip-testimonials-cards :testimonials="testimonials" class="q-mt-lg" />
     </div>
   </section>
 </template>
@@ -20,10 +20,11 @@ name: "cipTestimonialsBlock",
     title: {
       type: String,
       default: 'Отзывы'
-    },
-    testimonials: {
-      type: Array,
-      default: null
+    }
+  },
+  computed: {
+    testimonials() {
+      return this.$store.getters.getMainData.testimonials
     }
   }
 }

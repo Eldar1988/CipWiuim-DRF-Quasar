@@ -7,15 +7,14 @@
           На нашем сайте вы найдете
         </h3>
       </div>
-      <div class="row" style="margin-top: 30px">
+      <div class="about-site-gid">
         <div
           v-for="content in cardsContent"
           :key="content.title"
-          class="col-12 col-md-6 col-lg-6 q-mt-sm"
-          style="padding: 5px"
+          class=""
         >
           <q-card
-            class="shadow-1 q-pa-md text-center"
+            class="q-pa-md text-center shadow-0"
             style="min-height: 100%"
           >
             <q-btn
@@ -35,7 +34,7 @@
               label="Подробнее"
               outline
               color="primary"
-              class="q-mt-md"
+              class="q-mt-md q-px-md"
               size="md"
               :to="content.link"
             />
@@ -63,6 +62,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="sass">
+.about-site-gid
+  margin-top: 30px
+  display: grid
+  grid-template-columns: 1fr 1fr
+  @media screen and (max-width: 650px)
+    grid-template-columns: 1fr
+  grid-gap: 10px
 
 </style>

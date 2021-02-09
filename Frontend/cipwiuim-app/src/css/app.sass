@@ -1,5 +1,6 @@
 @import "fonts"
 @import "scrollbar"
+@import "shadows"
 
 *
   margin: 0
@@ -8,6 +9,7 @@
 
 body
   color: $dark
+  background: $grey-1
 
 .q-toolbar
   padding: 0 3px !important
@@ -39,10 +41,6 @@ body
     position: absolute
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, $primary 100%)
 
-.my-shadow
-  box-shadow: 8px 8px 20px 0px rgba(2, 156, 236, 0.3)
-  -webkit-box-shadow: 8px 8px 20px 0px rgba(2, 156, 236, 0.3)
-  -moz-box-shadow: 8px 8px 20px 0px rgba(2, 156, 236, 0.3)
 
 .q-img__content > div
   //padding: 0 !important
@@ -71,6 +69,12 @@ body
 
 .section
   margin-top: 100px
+
+.grey-border
+  border: 1px solid $grey-3
+
+.rounded
+  border-radius: 15px !important
 
 @media screen and (max-width: 992px)
   .hide-on-desktop

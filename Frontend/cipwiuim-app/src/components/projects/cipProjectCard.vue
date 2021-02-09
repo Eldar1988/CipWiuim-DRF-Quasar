@@ -1,12 +1,21 @@
 <template>
 <div>
-  <q-card class="my-card">
-    <q-img :src="project.image" />
+  <q-card class="my-card shadow-0">
+    <q-img :src="project.image" height="230px">
+      <template v-slot:loading>
+        <q-skeleton class="full-width" height="230px" />
+      </template>
+    </q-img>
     <q-card-section>
 
       <div class="row no-wrap items-center">
         <div class="col text-h6 ellipsis">
+          <router-link :to="`/projects/${project.slug}`">
           {{ project.title }}
+          </router-link>
+          <q-tooltip>
+            {{ project.title }}
+          </q-tooltip>
         </div>
       </div>
     </q-card-section>
@@ -15,20 +24,20 @@
       <div class="text-grey ellipsis-3-lines">
         {{ project.description }}
       </div>
-    </q-card-section>
-
-    <q-separator />
-
-    <q-card-actions>
       <q-btn
-        color="primary"
-        class="full-width bg-gradient-1"
+        color="primary" unelevated
+        class="full-width bg-gradient-1 q-mt-md blue-shadow"
         icon-right="mdi-chevron-right"
         :to="`/projects/${project.slug}`"
       >
         Подробнее
+        <q-tooltip>
+          Перейти к проекту
+        </q-tooltip>
       </q-btn>
-    </q-card-actions>
+    </q-card-section>
+
+
   </q-card>
 </div>
 </template>

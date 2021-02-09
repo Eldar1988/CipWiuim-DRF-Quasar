@@ -178,7 +178,10 @@
         :to="`/partner_forms/${partner.slug}`"
       >
         <q-item-section>
-          <q-img :src="partner.banner" height="150px" class="rounded-borders shadow-5 img-overlay">
+          <q-img :src="partner.banner" height="150px" class="rounded-borders img-overlay">
+            <template v-slot:loading>
+              <q-skeleton class="full-width" height="150px" />
+            </template>
             <div class="img-text">
               <span class="text-h6">{{ partner.banner_title }}</span>
             </div>

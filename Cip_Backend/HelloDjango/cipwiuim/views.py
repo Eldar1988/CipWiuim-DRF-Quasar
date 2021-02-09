@@ -13,8 +13,8 @@ from contacts.serializers import ContactsSerializer, SocialNetworksSerializer
 from forum.models import Theme
 from forum.serializers import ThemesListSerializer
 
-from .models import CIPPartnerForm, SliderSlide, HomePage, CIPReview
-from .serializers import CIPPartnerFormsListSerializer, SlidesSerializer, HomePageMetaSerializer, CIPReviewsSerializer
+from .models import CIPPartnerForm, SliderSlide, HomePage, CIPReview, CIPPartner
+from .serializers import CIPPartnerFormsListSerializer, SlidesSerializer, HomePageMetaSerializer, CIPReviewsSerializer, CIPPartnerSerializer
 
 
 class MainLayoutData(APIView):
@@ -54,6 +54,14 @@ class MainLayoutData(APIView):
         partner_forms = CIPPartnerForm.objects.all()
         partner_forms_serializer = CIPPartnerFormsListSerializer(partner_forms, many=True)
         response_data['partnerForms'] = partner_forms_serializer.data
+
+        testimonials = CIPReview.objects.all()
+        testimonials_serializer = CIPReviewsSerializer(testimonials, many=True)
+        response_data['testimonials'] = testimonials_serializer.data
+
+        partners = CIPPartner.objects.all()
+        partners_serializer = CIPPartnerSerializer(partners, many=True)
+        response_data['partners'] = partners_serializer.data
 
         return Response(response_data)
 

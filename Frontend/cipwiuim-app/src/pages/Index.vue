@@ -5,7 +5,7 @@
     <cip-about-site />
     <cip-projects/>
     <cip-posts />
-    <cip-testimonials-block :testimonials="testimonials" title="Отзывы о нашей компании"/>
+    <cip-testimonials-block title="Отзывы о нашей компании"/>
   </q-page>
 </template>
 
@@ -19,21 +19,5 @@ import CipTestimonialsBlock from "components/home/cipTestimonialsBlock";
 export default {
   name: 'PageIndex',
   components: {CipTestimonialsBlock, CipPosts, CipProjects, CipAboutSite, CipPartnerForms, CipHomeSlider},
-  data() {
-    return {
-      testimonials: []
-    }
-  },
-  mounted() {
-    this.loadTestimonials()
-  },
-  methods: {
-    async loadTestimonials() {
-      this.testimonials = await this.$axios.get(`${this.$store.getters.getServerURL}/get_testimonials`)
-      .then(({ data }) => {
-        return data
-      })
-    }
-  }
 }
 </script>
