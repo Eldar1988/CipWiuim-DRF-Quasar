@@ -6,7 +6,7 @@
     >
       <q-rating v-model="post.rating" :max="10" size="22px" readonly color="yellow"/>
       <template v-slot:loading>
-        <q-skeleton class="full-width" height="250px" />
+        <q-skeleton class="full-width" height="250px" square />
       </template>
     </q-img>
 
@@ -14,7 +14,7 @@
       <q-btn
         fab
         color="primary"
-        icon="mdi-arrow-right-bold"
+        icon="read_more"
         class="absolute bg-gradient-1 blue-shadow" unelevated
         style="top: 0; right: 12px; transform: translateY(-50%);"
         :to="`/blog/post/${post.slug}`"

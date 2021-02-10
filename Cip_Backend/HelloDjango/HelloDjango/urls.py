@@ -5,8 +5,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('cipwiuim.urls')),
+    path('projects/', include('projects.urls')),
     path('blog/', include('blog.urls')),
+    path('', include('cipwiuim.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

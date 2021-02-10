@@ -1,75 +1,63 @@
 <template>
   <div class="q-mt-lg">
-    <!--    Scroll controls   -->
-    <div class="scroll-controls text-center">
-      <q-btn
-        @click="scrollLeft"
-        icon="navigate_before"
-        round
-        color="primary"
-      />
-      <q-btn
-        @click="scrollRight"
-        icon="navigate_next"
-        round
-        color="primary"
-        class="q-ml-sm"
-      />
-    </div>
-    <!--    ==============   -->
-    <!--    Scroll Area   -->
-    <q-scroll-area
-      ref="scrollFutureProducts"
-      horizontal
-      class="full-width q-mt-md"
-      style="height: 450px; width: 100%"
-      :thumb-style="{ display: 'none' }"
-    >
-      <div class="row no-wrap">
-        <div
-          v-for="project in projects"
-          :key="project.id"
-          class="product-wrapper"
-          style="width: 325px; padding: 0 4px"
-        >
-          <cip-project-card :project="project" />
-        </div>
-      </div>
-    </q-scroll-area>
-    <!--    ============   -->
+    <splide :options="options" :slides="projects">
+      <splide-slide v-for="project in projects" :key="project.id">
+        <cip-project-card :project="project" />
+      </splide-slide>
+    </splide>
+
+
   </div>
 </template>
 
 <script>
-import CipProjectCard from "components/projects/cipProjectCard";
+import {Splide, SplideSlide} from '../../../node_modules/@splidejs/vue-splide'
+import '../../../node_modules/@splidejs/splide/dist/css/themes/splide-sea-green.min.css'
+import CipProjectCard from "components/projects/cipProjectCard"
+
 export default {
   name: "cipProjectsListScrollX",
-  components: {CipProjectCard},
+  components: {
+    CipProjectCard,
+    Splide,
+    SplideSlide,
+  },
   data() {
     return {
-      position: 0,
+      options: {
+        type: 'slide',
+        autoplay: true,
+        interval: 5000,
+        perPage: 4,
+        arrows: true,
+        pagination: true,
+        perMove: 1,
+        gap: 10,
+        lazyLoad: false,
+        breakpoints: {
+          1440: {
+            perPage: 3,
+          },
+          1100: {
+            type: 'loop',
+            perPage: 2,
+            arrows: false,
+            autoplay: false,
+          },
+          650: {
+            type: 'loop',
+            perPage: 1.2,
+            perMove: 1,
+            arrows: false,
+            autoplay: false,
+          }
+        }
+      }
     }
   },
   computed: {
     projects() {
       return this.$store.getters.getMainData.projects
-    }
-  },
-  methods: {
-    // Скролл вправо
-    scrollRight() {
-      // Проверка: количество карточек * ширину экрана (98% ширина контейнера)
-      if(this.position < this.projects.length * 320 - (window.innerWidth * 0.98)) {
-        this.position += 325
-        this.$refs.scrollFutureProducts.setScrollPosition(this.position, 500)
-      }
-    },
-    // Левый скролл
-    scrollLeft() {
-      if (this.position !== 0) {
-        this.position = this.position - 325
-        this.$refs.scrollFutureProducts.setScrollPosition(this.position, 500)
-      }
     }
   }
 }

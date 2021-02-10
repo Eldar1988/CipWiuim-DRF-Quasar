@@ -78,8 +78,8 @@ cfg.module.rules.push({
     devServer: {
       https: false,
       port: 8080,
-      // host: '192.168.0.199',
-      host: '192.168.0.155',
+      host: '192.168.0.199',
+      // host: '192.168.0.155',
       open: true // opens browser window automatically
     },
 
@@ -102,7 +102,9 @@ cfg.module.rules.push({
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify'
+      ]
     },
 
     // animations: 'all', // --- includes all animations

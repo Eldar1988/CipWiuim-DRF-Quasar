@@ -5,7 +5,7 @@
         Наши партнеры
       </h3>
     </div>
-    <div class="partners-logo-grid">
+    <div class="partners-logo-grid q-mt-md">
         <splide :options="options" :slides="partners">
           <splide-slide v-for="partner in partners" :key="partner.id">
             <div class="text-center">

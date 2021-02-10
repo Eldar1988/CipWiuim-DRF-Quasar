@@ -23,29 +23,33 @@ export default {
   },
   data() {
     return {
-      position: 0,
       posts: [],
       options: {
         type: 'slide',
-        autoplay: false,
-        interval: 2000,
-        perPage: 3,
+        autoplay: true,
+        interval: 5000,
+        perPage: 4,
         arrows: true,
         pagination: true,
         perMove: 1,
         gap: 10,
         lazyLoad: false,
         breakpoints: {
+          1440: {
+            perPage: 3,
+          },
           1100: {
             type: 'loop',
-            perPage: 2.7,
+            perPage: 2.2,
             arrows: false,
+            autoplay: false,
           },
           650: {
             type: 'loop',
-            perPage: 1.5,
-            arrows: false,
+            perPage: 1.2,
             perMove: 1,
+            arrows: false,
+            autoplay: false,
           }
         }
       }

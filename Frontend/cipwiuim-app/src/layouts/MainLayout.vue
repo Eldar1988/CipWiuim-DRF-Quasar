@@ -79,8 +79,8 @@ export default {
   background: linear-gradient(145deg, #1976d2 11%, #003399 75%) !important
 
 .page-container
-  max-width: 98%
-  margin: 15px auto 0
+  max-width: 95%
+  margin: 10px auto 0 !important
 
 @media screen and (max-width: 650px)
   .page-container

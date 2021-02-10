@@ -14,7 +14,7 @@
       padding
       height="auto"
       :autoplay="true"
-      class="bg-gradient-1 text-white my-shadow rounded "
+      class="bg-gradient-1 text-white my-shadow rounded-borders"
     >
       <q-carousel-slide
         v-for="(testimonial, index) in testimonials"
