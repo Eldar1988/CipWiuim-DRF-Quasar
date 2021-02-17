@@ -39,10 +39,6 @@ class MainLayoutData(APIView):
         post_categories_serializer = CategoriesSerializer(post_categories, many=True)
         response_data['postCategories'] = post_categories_serializer.data
 
-        forum_themes = Theme.objects.filter(public=True)
-        forum_themes_serializer = ThemesListSerializer(forum_themes, many=True)
-        response_data['forumThemes'] = forum_themes_serializer.data
-
         contacts = Contact.objects.last()
         contacts_serializer = ContactsSerializer(contacts, many=False)
         response_data['contacts'] = contacts_serializer.data

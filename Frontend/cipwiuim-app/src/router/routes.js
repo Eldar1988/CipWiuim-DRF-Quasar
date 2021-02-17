@@ -75,6 +75,14 @@ const routes = [
       { path: ':slug', params: 'slug', component: () => import('pages/PartnerFormDetail') },
     ]
   },
+  {
+    path: '/profile',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/ProfileDetail') },
+      { path: ':id', params: 'id', component: () => import('pages/ProfileDetail') },
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

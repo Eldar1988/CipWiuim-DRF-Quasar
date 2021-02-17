@@ -79,38 +79,17 @@
         </q-item>
       </q-expansion-item>
       <!--    forum   -->
-      <q-expansion-item
-        expand-separator
-        icon="mdi-forum-outline"
-        label="Форум"
-      >
         <q-item
           clickable
           to="/forum"
           exact-active-class="text-primary"
-          class="q-ml-sm text-weight-regular"
-          style="text-transform: none"
         >
           <q-item-section avatar>
-            <q-icon name="mdi-arrow-right-bold"/>
+            <q-icon name="mdi-forum-outline"/>
           </q-item-section>
-          <q-item-section>Все темы форума</q-item-section>
+          <q-item-section>Форум</q-item-section>
         </q-item>
-        <q-item
-          v-for="theme in forumThemes"
-          :key="theme.id"
-          clickable
-          :to="`/forum/${theme.slug}`"
-          exact-active-class="text-primary"
-          class="q-ml-sm text-weight-regular"
-          style="text-transform: none"
-        >
-          <q-item-section avatar>
-            <q-icon name="mdi-arrow-right-bold"/>
-          </q-item-section>
-          <q-item-section>{{ theme.title }}</q-item-section>
-        </q-item>
-      </q-expansion-item>
+
       <!--      about   -->
       <q-item
         clickable

@@ -32,3 +32,12 @@ class CompanyDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         exclude = ('admin_profile', 'public', 'register_date')
+
+
+class CompanyForProjectsSerializer(serializers.ModelSerializer):
+    """Сериализатор компании для деталей проекта"""
+    cooperators = ProfilesListSerializer(many=True)
+
+    class Meta:
+        model = Company
+        exclude = ('admin_profile', 'public', 'register_date', 'bio', 'address', 'requisites')

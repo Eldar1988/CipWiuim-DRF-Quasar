@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Project, DigitalIndicator, Benefit, Structure, QuestionAndAnswer, Review, ProjectVideo, ProjectFile, ProjectPhoto
+from companies.serializers import CompanyForProjectsSerializer
 
 
 class ProjectsListSerializer(serializers.ModelSerializer):
@@ -27,7 +28,7 @@ class StructuresListSerializer(serializers.ModelSerializer):
     """Project structures list serializer"""
     class Meta:
         model = Structure
-        exclude = ('project', 'seo_description', 'image', 'bio', 'order', 'public', 'pub_date', 'update')
+        exclude = ('project', 'seo_description', 'image', 'order', 'public', 'pub_date', 'update')
 
 
 class QuestionsAndAnswersSerializer(serializers.ModelSerializer):
@@ -75,6 +76,7 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
     videos = ProjectVideosSerializer(many=True)
     photos = ProjectPhotosSerializer(many=True)
     files = ProjectFilesSerializer(many=True)
+    company = CompanyForProjectsSerializer(many=False)
 
     class Meta:
         model = Project

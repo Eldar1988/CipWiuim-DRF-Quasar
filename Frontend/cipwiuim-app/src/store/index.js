@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import main from './modules/main'
 import blog from './modules/blog'
 import projects from './modules/projects'
+import forum from './modules/forum'
 
 // import example from './module-example'
 
@@ -39,7 +40,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       main,
       blog,
-      projects
+      projects,
+      forum
     },
 
     // enable strict mode (adds overhead!)

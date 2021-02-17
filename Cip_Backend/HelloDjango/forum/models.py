@@ -35,12 +35,12 @@ class Answer(models.Model):
     theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=True,
                               verbose_name='Тема', related_name='answers')
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True,
-                                verbose_name='Автор темы', related_name='answers')
+                                verbose_name='Профиль автора сообщения', related_name='answers')
     email = models.EmailField(null=True, blank=True)
     name = models.CharField('Имя автора', max_length=255, null=True, blank=True)
     text = models.TextField('Сообщение', max_length=7000)
     answer_for = models.ForeignKey('self', verbose_name='Ответ на сообщение от', on_delete=models.SET_NULL,
-                                   blank=True, null=True, related_name='parent')
+                                   blank=True, null=True, related_name='child')
     public = models.BooleanField('Опубликовать', default=True)
     pub_date = models.DateTimeField('Дата публикации',auto_now_add=True)
 
