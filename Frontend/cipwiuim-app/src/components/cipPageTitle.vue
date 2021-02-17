@@ -32,7 +32,7 @@ export default {
 
 @media screen and (max-width: 992px)
   .page-title
-    font-size: 30px
+    font-size: 22px
 
   .page-subtitle
     font-size: 14px

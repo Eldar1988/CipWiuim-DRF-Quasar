@@ -3,7 +3,7 @@
     <div class="forum-themes-grid q-mt-lg">
       <q-card
         v-for="theme in themes"
-        :key="theme"
+        :key="theme.id"
         class="forum-theme-card shadow-0 q-pa-md"
       >
         <!--        Theme meta   -->

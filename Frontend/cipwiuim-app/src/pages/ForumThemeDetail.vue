@@ -40,9 +40,9 @@
             <!--      /// Theme detail   -->
 
           </div>
-
+          <div id="answer-form"></div>
           <!--          Answer form   -->
-          <cip-answer-form :theme-id="theme.id" :answer-for="answerFor"/>
+          <cip-answer-form :theme-id="theme.id" :answer-for="answerFor" :theme-slug="theme.slug"/>
           <!--          /// Answer form   -->
 
           <!--          Answer cards   -->
@@ -58,7 +58,7 @@
               @click="reloadAnswers"
             />
           </div>
-          <cip-answer-cards :answers="theme.answers"/>
+          <cip-answer-cards :answers="theme.answers" @reply="reply"/>
           <!--          /// Answer cards   -->
         </div>
       </div>
@@ -89,9 +89,16 @@ export default {
     }
   },
   methods: {
+    reply(answer) {
+      this.answerFor = answer
+      document.querySelector('#answer-form').scrollIntoView({
+        behavior: 'smooth'
+      })
+    },
     async reloadAnswers() {
       this.reloadThemeLoading = true
       setTimeout(() => {
+        this.$q.notify('Лента сообщений обновлена')
         this.reloadThemeLoading = false
         this.$store.dispatch('fetchForumThemeData', this.theme.slug)
       }, 1000)

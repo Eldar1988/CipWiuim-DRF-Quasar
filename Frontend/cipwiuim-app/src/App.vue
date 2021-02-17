@@ -4,7 +4,8 @@
   </div>
 </template>
 <script>
-import {Notify} from "quasar";
+import {Notify} from "quasar"
+import setLocalStorageDefaults from "src/utils/setLocalStorageDefaults"
 export default {
   name: 'App',
   created() {
@@ -14,6 +15,7 @@ export default {
       textColor: 'white',
       actions: [{ icon: 'close', color: 'white' }]
     })
+    setLocalStorageDefaults()
   }
 }
 </script>

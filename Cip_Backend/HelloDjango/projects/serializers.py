@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Project, DigitalIndicator, Benefit, Structure, QuestionAndAnswer, Review, ProjectVideo, ProjectFile, ProjectPhoto
 from companies.serializers import CompanyForProjectsSerializer
+from forum.models import Theme
 
 
 class ProjectsListSerializer(serializers.ModelSerializer):
@@ -66,6 +67,12 @@ class ProjectFilesSerializer(serializers.ModelSerializer):
         exclude = ('project', 'order', 'pub_date', 'update')
 
 
+class ForumThemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Theme
+        fields = ('slug',)
+
+
 class ProjectDetailSerializer(serializers.ModelSerializer):
     """Project detail"""
     indicators = DigitalIndicatorsSerializer(many=True)
@@ -77,6 +84,7 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
     photos = ProjectPhotosSerializer(many=True)
     files = ProjectFilesSerializer(many=True)
     company = CompanyForProjectsSerializer(many=False)
+    forum_themes = ForumThemeSerializer(many=True, read_only=True)
 
     class Meta:
         model = Project

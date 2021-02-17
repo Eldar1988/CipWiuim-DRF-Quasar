@@ -38,19 +38,39 @@
     <!--      /// Video slider   -->
 
     <!--    Structure   -->
-    <section class="section">
+    <section v-if="project.structures.length > 0" class="section">
       <h2 class="section-title text-center">Структура проекта</h2>
       <cip-structure-slider :structure="project.structures" class="q-mt-md"/>
     </section>
     <!--    /// Structure   -->
-    <section class="q-mt-xl">
+
+    <!--    Questions & Forum   -->
+    <section v-if="project.questions.length > 0" class="q-mt-xl">
       <div class="question-and-forum-grid">
         <div class="questions">
           <h2 class="section-title">Вопросы и ответы</h2>
-          <cip-qustions  :questions="project.questions" class="q-mt-md"/>
+          <cip-qustions :questions="project.questions" class="q-mt-md"/>
+        </div>
+        <div class="go-to-forum q-mt-xl">
+          <q-card
+            class="go-to-forum-card shadow-0 rounded-borders bg-gradient-1 text-white flex flex-center column q-py-xl q-px-sm text-center"
+            style="min-height: 100%"
+          >
+            <h3 class="text-h6">Вы можете обсудить проект на форуме</h3>
+            <q-btn
+              label="Перейти к обсуждению"
+              color="white"
+              outline
+              icon-right="forward"
+              class="q-mt-md"
+              no-caps
+              :to="`/forum/${project.forum_themes[0].slug}`"
+            />
+          </q-card>
         </div>
       </div>
     </section>
+    <!--    /// Questions & Forum   -->
 
   </q-page>
 </template>

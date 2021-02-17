@@ -17,21 +17,34 @@
             <div v-if="answer.answer_for" class="q-mt-sm">
               <small class="text-bold">Ответ на сообщение:</small>
               <div class="answer-for q-ml-sm q-pa-sm rounded-borders bg-grey-3">
-                <p class="text-bold"><q-icon name="person" class="q-mr-sm" />{{ answer.answer_for.name }}</p>
+                <p class="text-bold">
+                  <q-icon name="person" class="q-mr-sm"/>
+                  {{ answer.answer_for.name }}
+                </p>
                 <p><i>{{ answer.answer_for.text }}</i></p>
               </div>
             </div>
             <!--            /// Answer for ...   -->
 
-            <div class="answer-meta flex q-mt-sm">
-              <p class="text-grey-7">
-                <q-icon name="restore"/>
-                {{ answer.pub_date.split('-')[1] }}
-              </p>
-              <p class="text-grey-7 q-ml-md">
-                <q-icon name="event"/>
-                {{ answer.pub_date.split('-')[0] }}
-              </p>
+            <div class="answer-meta flex q-mt-sm justify-between" style="align-items: center">
+              <div class="flex">
+                <p class="text-grey-7">
+                  <q-icon name="restore"/>
+                  {{ answer.pub_date.split('-')[1] }}
+                </p>
+                <p class="text-grey-7 q-ml-md">
+                  <q-icon name="event"/>
+                  {{ answer.pub_date.split('-')[0] }}
+                </p>
+              </div>
+              <q-btn
+                label="Ответить"
+                color="primary"
+                size="sm"
+                icon-right="reply"
+                unelevated
+                @click="$emit('reply', answer)"
+              />
             </div>
           </div>
         </div>

@@ -45,10 +45,10 @@
               </q-slide-transition>
 
               <q-expansion-item
-                icon="forward"
                 label="Подробнее"
                 header-class="text-white bg-primary rounded-borders my-shadow"
                 class="q-mt-lg"
+                expand-icon-class="text-white"
               >
                 <div v-html="item.bio" class="q-mt-lg bg-grey-2 q-pa-md rounded-borders"></div>
               </q-expansion-item>
@@ -65,7 +65,7 @@ export default {
   name: "cipStructureSlider",
   props: {
     structure: {
-      type: Object,
+      type: Array,
       default: null
     }
   },

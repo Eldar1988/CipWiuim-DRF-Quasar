@@ -4,11 +4,11 @@
     <div
       v-for="file in files"
       :key="file.id"
-      class="file rounded-borders q-pa-sm q-mt-md text-primary flex justify-between bg-white"
+      class="file rounded-borders q-pa-sm q-mt-md text-primary bg-white"
       style="align-items: center"
     >
-      <p>{{ file.title }}</p>
-      <div class="text-right">
+      <p class="text-bold">{{ file.title }}</p>
+      <div class="flex justify-end q-mt-sm">
       <q-btn
         label="скачать"
         class="bg-gradient-1"
