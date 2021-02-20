@@ -2,7 +2,7 @@
   "name": "cipwiuim-app",
   "version": "0.0.1",
   "description": "Crossplatform application for Cipwiuim company",
-  "productName": "Cipwiuim App",
+  "productName": "Cipwiuim",
   "author": "Space Developers",
   "private": true,
   "scripts": {

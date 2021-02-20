@@ -120,8 +120,8 @@ cfg.module.rules.push({
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Cipwiuim App`,
-        short_name: `Cipwiuim App`,
+        name: `Cipwiuim`,
+        short_name: `Cipwiuim`,
         description: `Crossplatform application for Cipwiuim company`,
         display: 'standalone',
         orientation: 'portrait',
