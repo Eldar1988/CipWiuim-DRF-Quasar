@@ -16,7 +16,7 @@
           </div>
           <!--          /// Company card   -->
         </div>
-        <div class="bg-white q-pa-md q-mt-xl">
+        <div class="bg-white q-pa-md q-mt-xl rounded-borders">
           <div v-html="project.bio"></div>
         </div>
       </section>
@@ -24,14 +24,14 @@
     <!--      /// First section - Main info   -->
 
     <!--      Benefits   -->
-    <section v-if="project.benefits.length > 0" class="text-center q-mt-xl">
+    <section v-if="project.benefits.length > 0" class="text-center section">
       <h2 class="section-title">Преференции</h2>
       <cip-project-benefits :benefits="project.benefits"/>
     </section>
     <!--      /// Benefits   -->
 
     <!--      Video slider   -->
-    <section v-if="project.videos.length > 0" class="text-center q-mt-xl">
+    <section v-if="project.videos.length > 0" class="text-center section">
       <h2 class="section-title">Видео</h2>
       <cip-video-slider :videos="project.videos" class="q-mt-md"/>
     </section>
@@ -45,7 +45,7 @@
     <!--    /// Structure   -->
 
     <!--    Questions & Forum   -->
-    <section v-if="project.questions.length > 0" class="q-mt-xl">
+    <section v-if="project.questions.length > 0" class="section">
       <div class="question-and-forum-grid">
         <div class="questions">
           <h2 class="section-title">Вопросы и ответы</h2>
@@ -53,17 +53,17 @@
         </div>
         <div class="go-to-forum q-mt-xl">
           <q-card
-            class="go-to-forum-card shadow-0 rounded-borders bg-gradient-1 text-white flex flex-center column q-py-xl q-px-sm text-center"
+            class="go-to-forum-card shadow-0 rounded-borders flex flex-center column q-py-xl q-px-sm text-center"
             style="min-height: 100%"
           >
             <h3 class="text-h6">Вы можете обсудить проект на форуме</h3>
             <q-btn
               label="Перейти к обсуждению"
-              color="white"
-              outline
+              color="primary"
+              text-color="white"
               icon-right="forward"
-              class="q-mt-md"
-              no-caps
+              class="q-mt-md bg-gradient-1 my-shadow"
+              no-caps unelevated
               :to="`/forum/${project.forum_themes[0].slug}`"
             />
           </q-card>
@@ -71,6 +71,13 @@
       </div>
     </section>
     <!--    /// Questions & Forum   -->
+
+    <!--    Project testimonials   -->
+    <section v-if="project.reviews.length > 0" class="section">
+      <h2 class="section-title text-center">Отзывы о проекте</h2>
+      <cip-testimonials-cards :testimonials="project.reviews" class="q-mt-md"/>
+    </section>
+    <!--    /// Project testimonials   -->
 
   </q-page>
 </template>
@@ -84,10 +91,12 @@ import CipVideoSlider from "components/service/cipVideoSlider";
 import CipProjectBenefits from "components/projects/cipProjectBenefits";
 import CipStructureSlider from "components/projects/cipStructureSlider";
 import CipQustions from "components/service/cipQustions";
+import CipTestimonialsCards from "components/home/cipTestimonialsCards";
 
 export default {
   name: "ProjectDetail",
   components: {
+    CipTestimonialsCards,
     CipQustions,
     CipStructureSlider,
     CipProjectBenefits, CipVideoSlider, CipFilesList, CipCompanyCard, CipBreadCumps, CipPageTitle

@@ -17,13 +17,13 @@
       </q-toolbar>
       <q-card-section>
         <p>Оставьте свои контактные данные.<br>Мы свяжемся с вами в ближайшее время.</p>
-        <q-form>
-          <q-input filled v-model="name" label="Ваше имя*" class="q-mt-sm" />
+        <q-form class="q-mt-lg">
+          <q-input filled v-model="name" label="Ваше имя*" class="q-mt-sm rounded-borders" />
           <q-input type="number" filled v-model="phone" label="Номер телефона*" class="q-mt-sm" />
           <q-btn
             label="Отправить"
-            class="q-mt-md q-py-sm full-width"
-            color="primary"
+            class="q-mt-md q-py-sm full-width bg-gradient-1 my-shadow"
+            color="primary" unelevated
             icon-right="mdi-send-check"
           />
         </q-form>

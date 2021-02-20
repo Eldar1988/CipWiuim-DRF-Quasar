@@ -8,7 +8,7 @@ class PostCommentInline(admin.TabularInline):
     """Комментарии на странице поста"""
     model = Comment
     exclude = ('email', 'parent', 'public')
-    readonly_fields = ('text', 'name')
+    extra = 1
 
 
 class PostPhotoInline(admin.TabularInline):

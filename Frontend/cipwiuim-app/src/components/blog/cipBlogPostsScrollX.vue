@@ -16,6 +16,12 @@ import '../../../node_modules/@splidejs/splide/dist/css/themes/splide-sea-green.
 
 export default {
   name: "cipBlogPostsScrollX",
+  props: {
+    postID: {
+      type: Number,
+      default: null
+    }
+  },
   components: {
     CipPostCard,
     Splide,
@@ -23,7 +29,6 @@ export default {
   },
   data() {
     return {
-      posts: [],
       options: {
         type: 'slide',
         autoplay: true,
@@ -55,16 +60,13 @@ export default {
       }
     }
   },
-  mounted() {
-    this.loadPosts()
-  },
-  methods: {
-    async loadPosts() {
-      this.posts = await this.$axios.get(`${this.$store.getters.getServerURL}/blog/get_future_posts`)
-      .then(({ data }) => {
-        return data
-      })
+  computed: {
+    posts() {
+      return this.$store.getters.getFuturePosts
     }
+  },
+  created() {
+    this.$store.dispatch('fetchFuturePosts')
   }
 }
 </script>

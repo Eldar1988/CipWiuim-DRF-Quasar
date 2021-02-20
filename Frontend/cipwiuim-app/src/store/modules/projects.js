@@ -8,14 +8,16 @@ export default {
     project: null
   },
   actions: {
-    fetchProjects({commit}) {
-      try{
-        return  axiosInstance.get(`${this.getters.getServerURL}/projects/`)
-          .then(({data}) => {
-            commit('setProjects', data)
-          })
-      } catch (e) {
-        throw e
+    fetchProjects({commit, state}) {
+      if (state.projects.length === 0) {
+        try{
+          return  axiosInstance.get(`${this.getters.getServerURL}/projects/`)
+            .then(({data}) => {
+              commit('setProjects', data)
+            })
+        } catch (e) {
+          throw e
+        }
       }
     },
     fetchProjectDetail({commit}, slug) {

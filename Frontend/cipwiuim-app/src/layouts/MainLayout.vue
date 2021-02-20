@@ -46,10 +46,13 @@
 
     <q-page-container class="page-container">
       <router-view/>
+      <cip-footer />
     </q-page-container>
     <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[8, 8]">
       <q-btn fab size="sm" icon="keyboard_arrow_up" color="primary" />
     </q-page-scroller>
+
+
 
   </q-layout>
 </template>
@@ -58,9 +61,10 @@
 import CipLogo from "components/header/cipLogo";
 import CipConsultation from "components/header/cipConsultation";
 import CipMainMenuNav from "components/header/cipMainMenuNav";
+import CipFooter from "components/footer/cipFooter";
 
 export default {
-  components: {CipMainMenuNav, CipConsultation, CipLogo},
+  components: {CipFooter, CipMainMenuNav, CipConsultation, CipLogo},
   data() {
     return {
       right: false

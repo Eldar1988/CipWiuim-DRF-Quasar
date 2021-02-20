@@ -4,7 +4,7 @@
     <div
       v-for="file in files"
       :key="file.id"
-      class="file rounded-borders q-pa-sm q-mt-md text-primary bg-white"
+      class="file rounded-borders q-pa-sm q-mb-md text-primary bg-white"
       style="align-items: center"
     >
       <p class="text-bold">{{ file.title }}</p>
@@ -17,6 +17,7 @@
         text-color="white"
         type="a"
         :href="file.url"
+        size="sm"
         target="_blank"
       />
       </div>

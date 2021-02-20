@@ -9,7 +9,7 @@ class Contact(models.Model):
     whatsapp = models.CharField('Whatsapp', max_length=20, help_text='В формате: 7707855****')
 
     def __str__(self):
-        return self.phone
+        return 'Контакты'
 
     class Meta:
         verbose_name = 'Контактная информация'

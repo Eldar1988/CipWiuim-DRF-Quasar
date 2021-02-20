@@ -15,7 +15,7 @@
           <router-link :to="`/forum/${theme.slug}`">
             <h3 class="forum-theme-card-title text-bold ">{{ theme.title }}</h3>
           </router-link>
-          <p class="q-mt-sm">{{ theme.description }}</p>
+          <p class="q-mt-sm ellipsis-2-lines">{{ theme.description }}</p>
 
           <!--          Actions   -->
           <q-btn

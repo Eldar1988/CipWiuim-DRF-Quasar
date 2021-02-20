@@ -13,14 +13,15 @@ from contacts.serializers import ContactsSerializer, SocialNetworksSerializer
 from forum.models import Theme
 from forum.serializers import ThemesListSerializer
 
-from .models import CIPPartnerForm, SliderSlide, HomePage, CIPReview, CIPPartner
-from .serializers import CIPPartnerFormsListSerializer, SlidesSerializer, HomePageMetaSerializer, CIPReviewsSerializer, CIPPartnerSerializer
+from .models import CIPPartnerForm, SliderSlide, HomePage, CIPReview, CIPPartner, CIPAbout, Rule, CIPQuestionAnswer
+from .serializers import CIPPartnerFormsListSerializer, SlidesSerializer, HomePageMetaSerializer, CIPReviewsSerializer, \
+    CIPPartnerSerializer, CIPPartnerFormSerializer, CIPAboutSerializer, CIPRulesSerializer, CIPQuestionAnswerSerializer
 
 
 class MainLayoutData(APIView):
     """For front main layout info"""
-    def get(self, request):
 
+    def get(self, request):
         response_data = {}
 
         home_meta = HomePage.objects.last()
@@ -64,7 +65,39 @@ class MainLayoutData(APIView):
 
 class TestimonialsListView(APIView):
     """Testimonials"""
+
     def get(self, request):
         testimonials = CIPReview.objects.all()
         serializer = CIPReviewsSerializer(testimonials, many=True)
         return Response(serializer.data)
+
+
+class PartnerFormDetail(APIView):
+    """Partner form detail by slug"""
+
+    def get(self, request, slug):
+        partner_form = CIPPartnerForm.objects.get(slug=slug)
+        serializer = CIPPartnerFormSerializer(partner_form, many=False)
+        return Response(serializer.data)
+
+
+class AboutCipView(APIView):
+    def get(self, request):
+        company = CIPAbout.objects.last()
+        serializer = CIPAboutSerializer(company, many=False)
+        return Response(serializer.data)
+
+
+class RulesView(APIView):
+    def get(self, request):
+        rules = Rule.objects.all()
+        serializer = CIPRulesSerializer(rules, many=True)
+        return Response(serializer.data)
+
+
+class QuestionsView(APIView):
+    def get(self, request):
+        questions = CIPQuestionAnswer.objects.all()
+        serializer = CIPQuestionAnswerSerializer(questions, many=True)
+        return Response(serializer.data)
+

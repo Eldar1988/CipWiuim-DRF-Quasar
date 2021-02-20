@@ -79,54 +79,58 @@ export default {
       let data = this.formData
       data.answer_for = this.answerFor ? this.answerFor.id : null
       data.theme = this.themeId
-      if(!data.name) {
-        this.loading = false
-        this.$q.notify({message: 'Необходимо указать Ваше имя'})
-        return null
-      }
+      let validate = this.validateForm(data)
 
-      if(!data.email) {
-        this.loading = false
-        this.$q.notify({message: 'Необходимо указать Ваш email'})
-        return null
-      }
+      if (validate) {
+        try {
+          await fetch(`${this.$store.getters.getServerURL}/forum/create_answer/`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+          }).then(response => {
 
-      if(!data.text) {
-        this.loading = false
-        this.$q.notify({message: 'Ваше сообщение не может быть пустым'})
-        return null
-      }
+            if (response.status === 201) {
+              setTimeout(() => {
+                this.formData.text = ''
+                this.loading = false
+                this.$q.notify({message: 'Ваше сообщение опубликовано', color: 'positive'})
+                this.$store.dispatch('fetchForumThemeData', this.themeSlug)
 
-      try {
-        await fetch(`${this.$store.getters.getServerURL}/forum/create_answer/`, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(data)
-        }).then(response => {
-
-          if (response.status === 201) {
-            setTimeout(() => {
-              this.formData.text = ''
-              this.loading = false
-              this.$q.notify({message: 'Ваше сообщение опубликовано', color: 'positive'})
-              this.$store.dispatch('fetchForumThemeData', this.themeSlug)
-
-              let defaultUser = {}
-              defaultUser.name = data.name
-              defaultUser.email = data.email
-              localStorage.setItem('defaultUser', JSON.stringify(defaultUser))
-
-              return null
-            }, 1500)
-          } else {
+                let defaultUser = {}
+                defaultUser.name = data.name
+                defaultUser.email = data.email
+                localStorage.setItem('defaultUser', JSON.stringify(defaultUser))
+                return null
+              }, 1500)
+            } else {
               this.loading = false
               this.$q.notify({message: 'Извините. Произошла ошибка. Попробуйте еще раз.', color: 'negative'})
               return null
-          }
-        })
-      } catch (e) {
-        this.$q.notify({message: `Извините. Произошла ошибка (${e.message}). Попробуйте еще раз.`, color: 'negative'})
+            }
+          })
+        } catch (e) {
+          this.$q.notify({message: `Извините. Произошла ошибка (${e.message}). Попробуйте еще раз.`, color: 'negative'})
+        }
+      } else {
+        this.loading = false
+        return null
       }
+    },
+
+    validateForm(data) {
+      if(!data.name) {
+        this.$q.notify({message: 'Необходимо указать Ваше имя'})
+        return false
+      }
+      if(!data.email) {
+        this.$q.notify({message: 'Необходимо указать Ваш email'})
+        return false
+      }
+      if(!data.text) {
+        this.$q.notify({message: 'Ваше сообщение не может быть пустым'})
+        return false
+      }
+      return true
     }
   }
 }

@@ -74,14 +74,14 @@ export default {
           1100: {
             type: 'loop',
             perPage: 2.5,
-            autoplay: false,
+            autoplay: false
           },
           650: {
             type: 'loop',
             perPage: 1.3,
             perMove: 1,
             arrows: false,
-            autoplay: false,
+            autoplay: false
           }
         }
       }

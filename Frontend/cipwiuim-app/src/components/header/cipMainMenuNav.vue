@@ -57,27 +57,19 @@
           <q-item-section>{{ project.title }}</q-item-section>
         </q-item>
       </q-expansion-item>
+
       <!--    blog   -->
-      <q-expansion-item
-        expand-separator
-        icon="mdi-newspaper-variant-multiple"
-        label="Блог"
+      <q-item
+        clickable
+        to="/blog"
+        exact-active-class="text-primary"
       >
-        <q-item
-          v-for="category in postCategories"
-          :key="category.id"
-          clickable
-          :to="`/blog/${category.slug}`"
-          exact-active-class="text-primary"
-          class="q-ml-sm text-weight-regular"
-          style="text-transform: none"
-        >
-          <q-item-section avatar>
-            <q-icon name="mdi-arrow-right-bold"/>
-          </q-item-section>
-          <q-item-section>{{ category.title }}</q-item-section>
-        </q-item>
-      </q-expansion-item>
+        <q-item-section avatar>
+          <q-icon name="mdi-newspaper-variant-multiple"/>
+        </q-item-section>
+        <q-item-section>Блог</q-item-section>
+      </q-item>
+
       <!--    forum   -->
         <q-item
           clickable
@@ -101,6 +93,7 @@
         </q-item-section>
         <q-item-section>О нас</q-item-section>
       </q-item>
+
       <!--    activities   -->
       <q-item
         clickable
@@ -112,6 +105,7 @@
         </q-item-section>
         <q-item-section>Виды деятельности</q-item-section>
       </q-item>
+
       <!--    site rules   -->
       <q-item
         clickable
@@ -123,6 +117,7 @@
         </q-item-section>
         <q-item-section>Правила сайта</q-item-section>
       </q-item>
+
       <!--    questions   -->
       <q-item
         clickable
@@ -134,6 +129,7 @@
         </q-item-section>
         <q-item-section>Вопросы и ответы</q-item-section>
       </q-item>
+
       <!--    contacts   -->
       <q-item
         clickable

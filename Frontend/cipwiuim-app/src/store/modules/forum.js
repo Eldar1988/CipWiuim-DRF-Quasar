@@ -8,12 +8,14 @@ export default {
     theme: {}
   },
   actions: {
-    fetchForumThemes({commit}) {
-      try {
-        return AxiosInstance.get(`${this.getters.getServerURL}/forum/`)
-          .then(({data}) => commit('setForumThemes', data))
-      } catch (e) {
-        Notify.create({message: `Не удалось загрузить темы форума (${e.message})`, position: 'top'})
+    fetchForumThemes({commit, state}) {
+      if (state.themes.length === 0) {
+        try {
+          return AxiosInstance.get(`${this.getters.getServerURL}/forum/`)
+            .then(({data}) => commit('setForumThemes', data))
+        } catch (e) {
+          Notify.create({message: `Не удалось загрузить темы форума (${e.message})`, position: 'top'})
+        }
       }
     },
     fetchForumThemeData({commit}, slug) {

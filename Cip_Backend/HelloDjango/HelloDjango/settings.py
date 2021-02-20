@@ -136,7 +136,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%d.%m.%Y - %H:%M:%S",
+    'DATETIME_FORMAT': "%d.%m.%y - %H:%M:%S",
     # 'DATETIME_FORMAT': "%H:%M:%S - %d.%m.%Y",
     'DATE_FORMAT': "%d.%m.%Y",
     'TIME_FORMAT': "%H:%M",

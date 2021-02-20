@@ -4,6 +4,7 @@ import main from './modules/main'
 import blog from './modules/blog'
 import projects from './modules/projects'
 import forum from './modules/forum'
+import partner from './modules/partner'
 
 // import example from './module-example'
 
@@ -22,7 +23,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
 
     state: () => ({
-      serverURL: 'http://192.168.0.199:8000',
+      // serverURL: 'http://192.168.0.199:8000',
+      serverURL: 'https://api.cipwiuim.com',
       // serverURL: 'http://0.0.0.0:8000',
     }),
 
@@ -41,7 +43,8 @@ export default function (/* { ssrContext } */) {
       main,
       blog,
       projects,
-      forum
+      forum,
+      partner
     },
 
     // enable strict mode (adds overhead!)

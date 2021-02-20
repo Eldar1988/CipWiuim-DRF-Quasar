@@ -15,7 +15,7 @@
 
             <!--            Answer for ...   -->
             <div v-if="answer.answer_for" class="q-mt-sm">
-              <small class="text-bold">Ответ на сообщение:</small>
+              <small class="text-bold">Ответ на {{ messageTitle }}:</small>
               <div class="answer-for q-ml-sm q-pa-sm rounded-borders bg-grey-3">
                 <p class="text-bold">
                   <q-icon name="person" class="q-mr-sm"/>
@@ -61,6 +61,10 @@ export default {
     answers: {
       type: Array,
       default: null
+    },
+    messageTitle: {
+      type: String,
+      default: 'сообщение'
     }
   }
 }
