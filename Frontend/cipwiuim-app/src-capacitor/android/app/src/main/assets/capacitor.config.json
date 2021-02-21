@@ -1,0 +1,7 @@
+{
+  "appId": "cipwiuim.com.app",
+  "appName": "Cipwiuim",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

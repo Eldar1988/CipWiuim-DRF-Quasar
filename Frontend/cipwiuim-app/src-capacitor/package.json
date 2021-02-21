@@ -1,0 +1,12 @@
+{
+  "name": "cipwiuim-app",
+  "version": "0.0.1",
+  "description": "Crossplatform application for Cipwiuim company",
+  "author": "Space Developers",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^2.4.6",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
+  }
+}
