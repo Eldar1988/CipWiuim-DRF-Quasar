@@ -58,6 +58,7 @@
           >
             <h3 class="text-h6">Вы можете обсудить проект на форуме</h3>
             <q-btn
+              v-if="project.forum_themes && project.forum_themes.length > 0"
               label="Перейти к обсуждению"
               color="primary"
               text-color="white"

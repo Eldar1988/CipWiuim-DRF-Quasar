@@ -45,3 +45,21 @@ class Bot(models.Model):
         verbose_name = 'Бот'
         verbose_name_plural = 'Боты'
 
+
+class CallBack(models.Model):
+    """Заявка на консультацию"""
+    name = models.CharField('Имя', max_length=255)
+    phone = models.CharField('Телефон', max_length=20)
+    note = models.TextField('Заметка', null=True, blank=True)
+    complete = models.BooleanField('Обработана', default=False)
+    date = models.DateTimeField('Дата', auto_now_add=True)
+    update = models.DateTimeField('Обновлено', auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки на консультацию'
+        ordering = ('-date',)
+

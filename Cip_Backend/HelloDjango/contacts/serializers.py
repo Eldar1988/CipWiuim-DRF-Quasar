@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Contact, SocialNetwork
+from .models import Contact, SocialNetwork, CallBack
 
 
 class ContactsSerializer(serializers.ModelSerializer):
@@ -14,3 +14,11 @@ class SocialNetworksSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocialNetwork
         fields = '__all__'
+
+
+class CallBackSerializer(serializers.ModelSerializer):
+    """Заявка на обюратный звонок"""
+    class Meta:
+        model = CallBack
+        fields = '__all__'
+
