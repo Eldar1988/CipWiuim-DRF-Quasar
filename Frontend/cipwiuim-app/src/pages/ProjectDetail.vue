@@ -2,6 +2,9 @@
   <q-page>
     <cip-bread-cumps :current-page-title="project.title" :pages="[{title: 'Проекты', slug: '/projects'}]"/>
     <article>
+      <q-img :src="project.image"
+        class="project-detail-image q-mt-sm rounded-borders"
+      />
       <cip-page-title :title="project.title"/>
       <!--      First section - Main info   -->
       <section class="main-info">
@@ -79,6 +82,7 @@
       <cip-testimonials-cards :testimonials="project.reviews" class="q-mt-md"/>
     </section>
     <!--    /// Project testimonials   -->
+    <cip-image-slider :images="project.photos" />
 
   </q-page>
 </template>
@@ -93,10 +97,12 @@ import CipProjectBenefits from "components/projects/cipProjectBenefits";
 import CipStructureSlider from "components/projects/cipStructureSlider";
 import CipQustions from "components/service/cipQustions";
 import CipTestimonialsCards from "components/home/cipTestimonialsCards";
+import CipImageSlider from "components/sliders/cipImageSlider";
 
 export default {
   name: "ProjectDetail",
   components: {
+    CipImageSlider,
     CipTestimonialsCards,
     CipQustions,
     CipStructureSlider,
@@ -114,6 +120,10 @@ export default {
 </script>
 
 <style lang="sass">
+.project-detail-image
+  height: 550px
+
+
 .main-info-section-grid
   display: grid
   grid-template-columns: 3fr 1fr
@@ -125,6 +135,10 @@ export default {
   grid-template-columns: 1fr 1fr
   grid-gap: 50px
 
+@media screen and (max-width: 1390px)
+  .project-detail-image
+    height: 450px
+
 @media screen and (max-width: 800px)
   .main-info-section-grid
     grid-template-columns: 1fr
@@ -132,4 +146,9 @@ export default {
 
   .question-and-forum-grid
     grid-template-columns: 1fr
+
+@media screen and (max-width: 650px)
+  .project-detail-image
+    height: 250px
+
 </style>

@@ -13,9 +13,11 @@ from contacts.serializers import ContactsSerializer, SocialNetworksSerializer
 from forum.models import Theme
 from forum.serializers import ThemesListSerializer
 
-from .models import CIPPartnerForm, SliderSlide, HomePage, CIPReview, CIPPartner, CIPAbout, Rule, CIPQuestionAnswer
+from .models import CIPPartnerForm, SliderSlide, HomePage, CIPReview, CIPPartner, CIPAbout, Rule, CIPQuestionAnswer, \
+    CIPPhoto, CIPVideo
 from .serializers import CIPPartnerFormsListSerializer, SlidesSerializer, HomePageMetaSerializer, CIPReviewsSerializer, \
-    CIPPartnerSerializer, CIPPartnerFormSerializer, CIPAboutSerializer, CIPRulesSerializer, CIPQuestionAnswerSerializer
+    CIPPartnerSerializer, CIPPartnerFormSerializer, CIPAboutSerializer, CIPRulesSerializer, CIPQuestionAnswerSerializer, \
+    CIPPhotosSerializer, CIPVideosSerializer
 
 
 class MainLayoutData(APIView):
@@ -101,3 +103,17 @@ class QuestionsView(APIView):
         serializer = CIPQuestionAnswerSerializer(questions, many=True)
         return Response(serializer.data)
 
+
+class GalleryView(APIView):
+    def get(self, request):
+        response_data = {}
+        photos = CIPPhoto.objects.all()
+        photos_serializer = CIPVideosSerializer(photos, many=True)
+
+        videos = CIPVideo.objects.all()
+        serializer = CIPVideosSerializer(videos, many=True)
+
+        response_data['photos'] = photos_serializer.data
+        response_data['videos'] = serializer.data
+
+        return Response(response_data)

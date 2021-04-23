@@ -6,29 +6,29 @@
     <q-card-section>
       <p class="text-bold">Автор проекта:</p>
       <q-img :src="company.logo" class="rounded-borders q-mt-md"/>
-      <div class="q-mt-md company-card-grid">
-        <q-btn
-          type="a"
-          :href="`tel:${company.phone}`"
-          icon="call"
-          color="dark"
-          unelevated
-        />
-        <q-btn
-          type="a"
-          :href="`https://wa.me/${company.whatsapp}`"
-          icon="mdi-whatsapp"
-          color="dark"
-          unelevated
-        />
-        <q-btn
-          :to="`/company/${company.slug}`"
-          text-color="dark"
-          color="accent"
-          label="Профиль"
-          unelevated
-        />
-      </div>
+<!--      <div class="q-mt-md company-card-grid">-->
+<!--        <q-btn-->
+<!--          type="a"-->
+<!--          :href="`tel:${company.phone}`"-->
+<!--          icon="call"-->
+<!--          color="dark"-->
+<!--          unelevated-->
+<!--        />-->
+<!--        <q-btn-->
+<!--          type="a"-->
+<!--          :href="`https://wa.me/${company.whatsapp}`"-->
+<!--          icon="mdi-whatsapp"-->
+<!--          color="dark"-->
+<!--          unelevated-->
+<!--        />-->
+<!--        <q-btn-->
+<!--          :to="`/company/${company.slug}`"-->
+<!--          text-color="dark"-->
+<!--          color="accent"-->
+<!--          label="Профиль"-->
+<!--          unelevated-->
+<!--        />-->
+<!--      </div>-->
 
     </q-card-section>
   </q-card>

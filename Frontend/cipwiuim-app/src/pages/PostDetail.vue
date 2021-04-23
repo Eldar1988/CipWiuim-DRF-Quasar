@@ -19,6 +19,7 @@
       </section>
     </article>
     <!--    /// Post   -->
+    <cip-image-slider :images="post.images"/>
 <!--    Future posts   -->
     <section class="section">
       <h2 class="section-title">Читайте также</h2>
@@ -39,10 +40,12 @@ import CipBreadCumps from "components/service/cipBreadCumps";
 import CipPostImage from "components/blog/post/cipPostImage";
 import CipBlogPostsScrollX from "components/blog/cipBlogPostsScrollX";
 import CipPostCommets from "components/blog/post/cipPostCommets";
+import CipImageSlider from "components/sliders/cipImageSlider";
 
 export default {
   name: "PostDetail",
   components: {
+    CipImageSlider,
     CipPostCommets,
     CipBlogPostsScrollX,
     CipPostImage,

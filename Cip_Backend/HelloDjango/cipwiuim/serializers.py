@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import CIPAbout, CIPReview, CIPPartner, CIPPartnerForm, PartnerFile, ForPartnerNotification, \
-    NotificationFile, CIPQuestionAnswer, Rule, CIPPhoto, CIPVideo, SliderSlide, HomePage
+    NotificationFile, CIPQuestionAnswer, Rule, CIPVideo, SliderSlide, HomePage, CIPPhoto
 
 
 class HomePageMetaSerializer(serializers.ModelSerializer):
