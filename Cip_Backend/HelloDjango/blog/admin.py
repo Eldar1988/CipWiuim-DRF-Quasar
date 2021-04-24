@@ -23,6 +23,7 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ('category', 'rating', 'future', 'public', 'order', 'slug')
     list_filter = ('category', 'future', 'public', 'pub_date', 'update')
     search_fields = ('title',)
+    prepopulated_fields = {"slug": ("title",)}
     save_as = True
     save_on_top = True
     inlines = [PostPhotoInline, PostCommentInline]
@@ -38,6 +39,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'order')
     list_editable = ('slug', 'order')
     search_fields = ('title',)
+    prepopulated_fields = {"slug": ("title",)}
     save_as = True
     save_on_top = True
 

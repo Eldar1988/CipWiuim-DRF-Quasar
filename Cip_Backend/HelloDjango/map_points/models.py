@@ -17,17 +17,32 @@ class Region(models.Model):
         ordering = ('order',)
 
 
+class PointType(models.Model):
+    title = models.CharField('Название отрасли', max_length=250)
+    slug = models.SlugField('Slug', unique=True, null=True, blank=True,
+                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
+    order = models.PositiveSmallIntegerField('Порядковый номер', null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Отрасль'
+        verbose_name_plural = 'Отрасли'
+        ordering = ('order',)
+
+
 class MapPoint(models.Model):
     """Точка на карте"""
     title = models.CharField('Заголовок', max_length=200)
+    slug = models.SlugField('Slug', unique=True)
+    type = models.ManyToManyField(PointType, blank=True,
+                                  verbose_name='Отрасль', related_name='points')
     region = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Область или регион',
                                related_name='points')
-    x = models.FloatField('Координата Х', null=True)
-    y = models.FloatField('Координата y', null=True)
-    map_title = models.CharField('Заголовок для объекта на карте (необязательно)', max_length=200, blank=True)
-    short_description = RichTextUploadingField('Краткое описание', help_text='Будет отображаться на карте')
+    coordinates = models.CharField('Координаты', null=True, blank=True, max_length=50)
+    image = models.URLField('Изображение', null=True, blank=True)
     description = RichTextUploadingField('Полное описание')
-    slug = models.SlugField('Slug', unique=True)
     pub_date = models.DateField('Дата создания', auto_now_add=True)
 
     def __str__(self):

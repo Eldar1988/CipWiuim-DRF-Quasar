@@ -10,6 +10,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ('get_image', 'title', 'company', 'project_admin', 'public', 'order', 'slug', 'views', 'pub_date')
     list_editable = ('public', 'order', 'slug')
     list_filter = ('company', 'public', 'pub_date', 'update')
+    prepopulated_fields = {"slug": ("title",)}
     search_fields = ('title',)
     save_on_top = True
     save_as = True
@@ -44,6 +45,7 @@ class BenefitAdmin(admin.ModelAdmin):
 class StructureAdmin(admin.ModelAdmin):
     list_display = ('get_image', 'title', 'project', 'order', 'slug', 'public', 'pub_date')
     list_editable = ('project', 'order', 'slug', 'public')
+    prepopulated_fields = {"slug": ("title",)}
     list_filter = ('project', 'public', 'pub_date', 'update')
     search_fields = ('title',)
     save_on_top = True

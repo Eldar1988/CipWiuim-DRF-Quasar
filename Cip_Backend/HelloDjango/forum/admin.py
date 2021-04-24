@@ -13,6 +13,7 @@ class ThemeAdmin(admin.ModelAdmin):
     list_editable = ('author', 'order', 'slug')
     list_filter = ('author', 'project', 'pub_date', 'update')
     search_fields = ('title',)
+    prepopulated_fields = {"slug": ("title",)}
     inlines = [ThemeAnswersInline]
     save_on_top = True
     save_as = True

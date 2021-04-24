@@ -27,6 +27,7 @@ class CIPPartnerAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'order')
     list_editable = ('slug', 'order')
     search_fields = ('title',)
+    prepopulated_fields = {"slug": ("title",)}
     save_on_top = True
     save_as = True
     inlines = [PartnerFileInline, PartnerNotificationInline]

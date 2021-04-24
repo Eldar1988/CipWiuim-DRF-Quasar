@@ -5,9 +5,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Category(models.Model):
     """Категория"""
     title = models.CharField('Заголовок', max_length=255, db_index=True)
-    description = models.TextField('Краткое описание категории')
     slug = models.SlugField('Slug', unique=True,
                             help_text='только маленькие латинские буквы, без пробелов и спец символов')
+    description = models.TextField('Краткое описание категории')
     order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
 
     def __str__(self):
@@ -22,6 +22,8 @@ class Category(models.Model):
 class Post(models.Model):
     """Пост"""
     title = models.CharField('Заголовок', max_length=255, db_index=True)
+    slug = models.SlugField('Slug', unique=True,
+                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     description = models.TextField('Краткое описание поста')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True,
                                  verbose_name='Категория поста', related_name='posts')
@@ -31,8 +33,6 @@ class Post(models.Model):
     future = models.BooleanField('Рекомендовать', default=False)
     public = models.BooleanField('Опубликовать', default=False)
     order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
-    slug = models.SlugField('Slug', unique=True,
-                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     update = models.DateTimeField('Обновлено', auto_now=True)
     views = models.PositiveSmallIntegerField('Количество просмотров', default=0)

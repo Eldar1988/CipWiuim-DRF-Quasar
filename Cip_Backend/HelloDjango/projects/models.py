@@ -10,6 +10,8 @@ class Project(models.Model):
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True,
                                 verbose_name='Компания', related_name='projects')
     title = models.CharField('Название проекта', max_length=255, db_index=True)
+    slug = models.SlugField('Slug', unique=True,
+                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     description = models.TextField('Краткое описание (отображается в списке)',
                                    help_text='Будет отображено в общих списках проектов, а также в теге description')
     short_description = RichTextUploadingField('Краткое описание проекта (отображается на странице проекта)')
@@ -17,8 +19,6 @@ class Project(models.Model):
     image = models.URLField('Картинка проекта')
     order = models.PositiveSmallIntegerField('Порядковый номер проекта',
                                              help_text='Необходим для сортировки проектов в списках')
-    slug = models.SlugField('Slug', unique=True,
-                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     public = models.BooleanField('Опубликовать', default=False)
     pub_date = models.DateTimeField('Дата публикации проекта', auto_now_add=True)
     update = models.DateTimeField('Изменения', auto_now=True)
@@ -78,14 +78,14 @@ class Structure(models.Model):
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True,
                                 verbose_name='Проект', related_name='structures')
     title = models.CharField('Заголовок', max_length=255)
+    slug = models.SlugField('Slug', unique=True,
+                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     description = RichTextUploadingField('Краткое описание')
     seo_description = RichTextUploadingField('Краткое описание (для СЕО)', help_text='Может дублировать краткое описание')
     miniature = models.URLField('Миниатюра (ссылка на изображение)')
     image = models.URLField('Изображение проекта')
     bio = RichTextUploadingField('Полное описание')
     order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
-    slug = models.SlugField('Slug', unique=True,
-                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     public = models.BooleanField('Опубликовать', default=False)
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     update = models.DateTimeField('Обновлено', auto_now=True)

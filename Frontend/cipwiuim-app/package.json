@@ -16,7 +16,8 @@
     "@splidejs/vue-splide": "^0.3.5",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-yandex-maps": "^0.10.10"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",

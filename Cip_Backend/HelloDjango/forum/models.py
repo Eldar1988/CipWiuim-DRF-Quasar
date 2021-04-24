@@ -11,11 +11,11 @@ class Theme(models.Model):
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True,
                                 verbose_name='Проект', related_name='forum_themes')
     title = models.CharField('Заголовок', max_length=255, db_index=True)
+    slug = models.SlugField('Slug', unique=True,
+                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     description = models.TextField('Краткое описание темы')
     body = RichTextUploadingField('Тема')
     order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')
-    slug = models.SlugField('Slug', unique=True,
-                            help_text='только маленькие латинские буквы, без пробелов и спец символов')
     public = models.BooleanField('Опубликовать', default=False)
     views = models.PositiveSmallIntegerField('Количество просмотров', default=0)
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)

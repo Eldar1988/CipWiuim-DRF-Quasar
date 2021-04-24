@@ -82,13 +82,14 @@ class CIPPartner(models.Model):
 class CIPPartnerForm(models.Model):
     """Формы сотрудничества с CIP WIUIM"""
     title = models.CharField('Заголовок', max_length=100)
+    slug = models.SlugField('Slug', unique=True)
+    register_url = models.CharField('Ссылка на регистрацию', null=True, blank=True, max_length=255)
     short_description = models.TextField('Краткое описание',
                                          help_text='Будет выводится на главной странице')
     description = RichTextUploadingField('Полное описание')
     image = models.URLField('Ссылка на картинку')
     banner = models.URLField('Ссылка на баннер', blank=True, null=True)
     banner_title = models.CharField('Заголовок на баннере', max_length=100, blank=True, null=True)
-    slug = models.SlugField('Slug', unique=True)
     order = models.PositiveSmallIntegerField('Порядковый номер')
 
     def __str__(self):

@@ -9,6 +9,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('forum/', include('forum.urls')),
     path('contacts/', include('contacts.urls')),
+    path('map/', include('map_points.urls')),
     path('', include('cipwiuim.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
