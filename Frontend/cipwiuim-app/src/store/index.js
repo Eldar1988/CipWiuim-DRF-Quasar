@@ -24,8 +24,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
 
     state: () => ({
-      serverURL: 'http://192.168.0.199:8000',
-      // serverURL: 'https://api.cipwiuim.com',
+      // serverURL: 'http://192.168.0.199:8000',
+      serverURL: 'https://api.cipwiuim.com',
       // serverURL: 'http://0.0.0.0:8000',
     }),
     getters: {

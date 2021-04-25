@@ -20,6 +20,8 @@
               text-color="primary"
               color="white" unelevated
               class="full-width q-mt-lg  rounded-borders my-shadow q-py-sm"
+              type="a"
+              :href="partner.register_url ? partner.register_url : ''"
             />
           </q-card-section>
         </q-card>

@@ -4,6 +4,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Region(models.Model):
     title = models.CharField('Название области или региона', max_length=250)
+    coordinates = models.CharField('Координаты региона', null=True, blank=True, max_length=50)
     slug = models.SlugField('Slug', unique=True,
                             help_text='только маленькие латинские буквы, без пробелов и спец символов')
     order = models.PositiveSmallIntegerField('Порядковый номер', help_text='Будет использоваться для сортировки')

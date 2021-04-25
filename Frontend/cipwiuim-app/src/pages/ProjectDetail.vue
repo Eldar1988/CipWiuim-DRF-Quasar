@@ -14,8 +14,11 @@
             <cip-files-list v-if="project.files.length > 0" :files="project.files" class="q-mt-xl"/>
           </div>
           <!--          Company card   -->
-          <div class="project-company q-mt-lg">
+          <div v-if="project.company" class="project-company q-mt-lg">
             <cip-company-card :company="project.company"/>
+          </div>
+          <div v-else class="flex flex-center hide-on-mobile">
+            <cip-logo style="transform: scale(1.5)"/>
           </div>
           <!--          /// Company card   -->
         </div>
@@ -98,10 +101,12 @@ import CipStructureSlider from "components/projects/cipStructureSlider";
 import CipQustions from "components/service/cipQustions";
 import CipTestimonialsCards from "components/home/cipTestimonialsCards";
 import CipImageSlider from "components/sliders/cipImageSlider";
+import CipLogo from "components/header/cipLogo";
 
 export default {
   name: "ProjectDetail",
   components: {
+    CipLogo,
     CipImageSlider,
     CipTestimonialsCards,
     CipQustions,

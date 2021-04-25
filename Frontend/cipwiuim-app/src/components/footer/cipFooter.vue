@@ -17,6 +17,12 @@
               </router-link>
             </li>
             <li>
+              <router-link to="/activities" class="text-white">
+                <q-icon name="chevron_right" color="white"/>
+                Виды деятельности
+              </router-link>
+            </li>
+            <li>
               <router-link to="/projects" class="text-white">
                 <q-icon name="chevron_right" color="white"/>
                 Проекты

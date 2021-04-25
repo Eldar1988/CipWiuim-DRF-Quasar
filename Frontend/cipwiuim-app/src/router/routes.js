@@ -47,6 +47,20 @@ const routes = [
     ]
   },
   {
+    path: '/activities/:slug/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Map/RegionDetail') },
+    ]
+  },
+  {
+    path: '/activities/:slug/:slug',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Map/MapPointDetail') },
+    ]
+  },
+  {
     path: '/rules',
     component: () => import('layouts/MainLayout.vue'),
     children: [

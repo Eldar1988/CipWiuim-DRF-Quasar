@@ -18,6 +18,7 @@
             <article>
               <div v-html="theme.body"></div>
               <q-btn
+                v-if="theme.project"
                 label="Перейти к проекту"
                 class="bg-gradient-1 q-mt-md my-shadow"
                 text-color="white"

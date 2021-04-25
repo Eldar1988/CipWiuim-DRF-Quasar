@@ -1,19 +1,27 @@
-export default function () {
+export default function (region, points=[], zoom=7) {
   ymaps.ready(init);
 
   function init(){
     let myMap = new ymaps.Map("map", {
-      center: [48.684590, 67.728947],
-      zoom: 6
-    });
-    let myPlacemark = new ymaps.Placemark([48.047036, 70.750961], {
-      // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-      balloonContentHeader: "title",
-      balloonContentBody: "Содержимое <em>балуна</em> метки",
-      hintContent: "Хинт метки"
+      center: region.coordinates.split(','),
+      zoom: zoom
     });
 
-    myMap.geoObjects.add(myPlacemark);
+    if (points && points.length > 0) {
+      points.forEach(item => {
+        let coordinates = []
+        item.coordinates.split(',').forEach(item => coordinates.push(+item))
+        let myPlacemark = new ymaps.Placemark(coordinates, {
+          // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+          balloonContentHeader: item.title,
+          balloonContentBody: `<button style="padding: 5px 10px"><a href='/activities/${region.slug}/${item.slug}'>Подробнее</a></button>`,
+          hintContent: item.title,
+          balloonContentFooter: item.type.join(' ')
+        });
+        myMap.geoObjects.add(myPlacemark);
+      })
+    }
+
   }
 }
 

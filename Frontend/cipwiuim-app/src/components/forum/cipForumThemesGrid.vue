@@ -27,6 +27,7 @@
             :to="`/forum/${theme.slug}`"
           />
           <q-btn
+            v-if="theme.project"
             label="О проекте"
             no-caps
             class="q-mt-md q-ml-md"

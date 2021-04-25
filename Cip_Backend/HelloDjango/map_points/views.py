@@ -8,7 +8,8 @@ from .serializers import MapPointsListSerializer, MapPointsDetailSerializer, Reg
 
 class MapPointsListView(APIView):
     """Список объектов на карте"""
-    def get(self, reguest, region=None, point_type=None):
+    def get(self, reguest, region, point_type=None):
+        response_data = {}
 
         if point_type == 'None':
             points = MapPoint.objects.filter(region__slug=region)
@@ -16,7 +17,13 @@ class MapPointsListView(APIView):
             points = MapPoint.objects.filter(region__slug=region, type__slug=point_type)
 
         serializer = MapPointsListSerializer(points, many=True)
-        return Response(serializer.data)
+        response_data['points'] = serializer.data
+
+        region = Region.objects.get(slug=region)
+        region_serializer = RegionListSerializer(region, many=False)
+        response_data['region'] = region_serializer.data
+
+        return Response(response_data)
 
 
 class RegionsListView(generics.ListAPIView):
@@ -27,3 +34,11 @@ class RegionsListView(generics.ListAPIView):
 class PointTypesListView(generics.ListAPIView):
     queryset = PointType.objects.all()
     serializer_class = PointTypeListSerializer
+
+
+class MapPointDetailView(APIView):
+
+    def get(self, request, slug):
+        point = MapPoint.objects.get(slug=slug)
+        serializer = MapPointsDetailSerializer(point, many=False)
+        return Response(serializer.data)

@@ -11,7 +11,7 @@
         <cip-consultation/>
         <!--        ==============   -->
         <!--        Account button   -->
-        <q-btn dense outline round icon="mdi-account-tie" class="hide-on-mobile q-mr-lg"/>
+        <q-btn dense flat round icon="mdi-account-tie" class="q-mr-lg" to="/partner_forms"/>
         <!--        ==============   -->
         <!--        Menu button   -->
         <q-btn dense flat size="lg" round icon="mdi-menu" @click="right = !right"/>
