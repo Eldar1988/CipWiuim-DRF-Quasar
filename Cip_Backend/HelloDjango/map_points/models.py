@@ -52,3 +52,32 @@ class MapPoint(models.Model):
     class Meta:
         verbose_name = 'Объект на карте'
         verbose_name_plural = 'Объекты на карте'
+
+
+class MapPointImage(models.Model):
+    map_point = models.ForeignKey(MapPoint, on_delete=models.SET_NULL, null=True, blank=True, related_name='images')
+    image = models.URLField('Ссылка на картинку')
+    order = models.PositiveSmallIntegerField('Порядковый номер')
+
+    def __str__(self):
+        return f'{self.pk}'
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        ordering = ('order',)
+
+
+class MapPointVideo(models.Model):
+    map_point = models.ForeignKey(MapPoint, on_delete=models.SET_NULL, null=True, blank=True, related_name='videos')
+    url = models.URLField('Ссылка на видео', default='https://www.youtube.com/embed/',
+                          help_text='Скопировать и вставить конечный параметр ссылки после знака =')
+    order = models.PositiveSmallIntegerField('Порядковый номер')
+
+    def __str__(self):
+        return f'{self.pk}'
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        ordering = ('order',)
