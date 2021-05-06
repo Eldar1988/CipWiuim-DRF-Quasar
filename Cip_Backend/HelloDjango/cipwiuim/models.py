@@ -9,13 +9,17 @@ class HomePage(models.Model):
     title = models.CharField('Title сайта', max_length=110)
     description = models.TextField('Описание сайта', max_length=190)
     logo = models.URLField('Ссылка на лого сайта')
+    projects_description = RichTextUploadingField('Описание (проекты)', null=True, blank=True)
+    forum_description = RichTextUploadingField('Описание (форум)', null=True, blank=True)
+    blog_description = RichTextUploadingField('Описание (блог)', null=True, blank=True)
+    map_description = RichTextUploadingField('Описание (карта)', null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = 'Главная страница СЕО'
-        verbose_name_plural = 'Главная страцниа СЕО'
+        verbose_name = 'Главная страница'
+        verbose_name_plural = 'Главная страница'
 
 
 class SliderSlide(models.Model):
