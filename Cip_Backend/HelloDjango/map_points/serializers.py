@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import MapPoint, Region, PointType, MapPointVideo, MapPointImage
+from .models import MapPoint, Region, PointType
 
 
 class MapPointsListSerializer(serializers.ModelSerializer):
@@ -29,23 +29,23 @@ class PointTypeListSerializer(serializers.ModelSerializer):
         model = PointType
         exclude = ('order',)
 
-
-class MapPointVideoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MapPointVideo
-        fields = '__all__'
-
-
-class MapPointImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MapPointImage
-        fields = '__all__'
+#
+# class MapPointVideoSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = MapPointVideo
+#         fields = '__all__'
+#
+#
+# class MapPointImageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = MapPointImage
+#         fields = '__all__'
 
 
 class MapPointsDetailSerializer(serializers.ModelSerializer):
     region = RegionListSerializer(many=False, read_only=True)
-    videos = MapPointVideoSerializer(many=True, read_only=True)
-    images = MapPointImageSerializer(many=True, read_only=True)
+    # videos = MapPointVideoSerializer(many=True, read_only=True)
+    # images = MapPointImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = MapPoint

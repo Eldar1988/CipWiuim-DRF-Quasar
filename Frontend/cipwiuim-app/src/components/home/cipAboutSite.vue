@@ -8,35 +8,115 @@
         </h3>
       </div>
       <div class="about-site-gid">
-        <div
-          v-for="content in cardsContent"
-          :key="content.title"
-          class=""
-        >
+        <div>
           <q-card
             class="q-pa-md text-center shadow-0"
             style="min-height: 100%"
           >
             <q-btn
-              :icon="content.icon"
+              icon="mdi-finance"
               size="lg"
               class="bg-gradient-1 my-shadow"
               text-color="white"
               round unelevated
             />
             <h4 class="text-h6 q-mt-lg">
-              {{ content.title }}
+              Проекты
             </h4>
-            <p class="q-mt-md">
-              {{ content.text }}
-            </p>
+            <div class="q-mt-md">
+              <div v-html="mainData.homeMeta.projects_description"></div>
+            </div>
             <q-btn
               label="Подробнее"
               outline
               color="primary"
               class="q-mt-md q-px-md"
               size="md"
-              :to="content.link"
+              to="/projects"
+            />
+          </q-card>
+        </div>
+        <div>
+          <q-card
+            class="q-pa-md text-center shadow-0"
+            style="min-height: 100%"
+          >
+            <q-btn
+              icon="mdi-forum-outline"
+              size="lg"
+              class="bg-gradient-1 my-shadow"
+              text-color="white"
+              round unelevated
+            />
+            <h4 class="text-h6 q-mt-lg">
+              Форум
+            </h4>
+            <div class="q-mt-md">
+              <div v-html="mainData.homeMeta.forum_description"></div>
+            </div>
+            <q-btn
+              label="Подробнее"
+              outline
+              color="primary"
+              class="q-mt-md q-px-md"
+              size="md"
+              to="/forum"
+            />
+          </q-card>
+        </div>
+        <div>
+          <q-card
+            class="q-pa-md text-center shadow-0"
+            style="min-height: 100%"
+          >
+            <q-btn
+              icon="mdi-newspaper-variant-multiple"
+              size="lg"
+              class="bg-gradient-1 my-shadow"
+              text-color="white"
+              round unelevated
+            />
+            <h4 class="text-h6 q-mt-lg">
+              Информационный блог
+            </h4>
+            <div class="q-mt-md">
+              <div v-html="mainData.homeMeta.blog_description"></div>
+            </div>
+            <q-btn
+              label="Подробнее"
+              outline
+              color="primary"
+              class="q-mt-md q-px-md"
+              size="md"
+              to="/blog"
+            />
+          </q-card>
+        </div>
+        <div>
+          <q-card
+            class="q-pa-md text-center shadow-0"
+            style="min-height: 100%"
+          >
+            <q-btn
+              icon="di-map-search-outline"
+              size="lg"
+              class="bg-gradient-1 my-shadow"
+              text-color="white"
+              round unelevated
+            />
+            <h4 class="text-h6 q-mt-lg">
+              Виды деятельности на карте
+            </h4>
+            <div class="q-mt-md">
+              <div v-html="mainData.homeMeta.map_description"></div>
+            </div>
+            <q-btn
+              label="Подробнее"
+              outline
+              color="primary"
+              class="q-mt-md q-px-md"
+              size="md"
+              to="/activities"
             />
           </q-card>
         </div>
@@ -49,6 +129,11 @@
 <script>
 export default {
   name: "cipAboutSite",
+  computed: {
+    mainData() {
+      return this.$store.getters.getMainData
+    }
+  },
   data() {
     return {
       cardsContent: [

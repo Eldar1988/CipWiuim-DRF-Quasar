@@ -1,10 +1,13 @@
 <template>
 <q-page>
   <cip-bread-cumps current-page-title="Информационный блог" />
-  <cip-page-title title="Наш блог" subtitle="Где бы человек не находился, он там и должен улучшить свое благосостояние. Вместе с «CIP WIUIM» вы сможете его улучшить не только для себя, но и для всех жителей Центрально-азиатского региона. Не пропустите последние новости, присоединяйтесь к нашему блогу! " />
+  <cip-page-title title="Наш блог" />
+  <div class="q-mt-md">
+    <div v-html="homeData.blog_description"></div>
+  </div>
 <!--  Posts grid   -->
   <section>
-    <div class="posts row section">
+    <div class="posts row q-mt-xl">
       <div
         v-for="post in posts"
         :key="post.id"
@@ -30,6 +33,9 @@ export default {
   computed: {
     posts() {
       return this.$store.getters.getPosts
+    },
+    homeData () {
+      return this.$store.getters.getMainData.homeMeta
     }
   },
   created() {

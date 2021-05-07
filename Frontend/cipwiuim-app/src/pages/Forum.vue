@@ -1,10 +1,10 @@
 <template>
   <q-page>
     <cip-bread-cumps current-page-title="Форум"/>
-    <cip-page-title
-      title="Форум Cip Wiuim"
-      subtitle="<b><br>С нами вы узнаете:</b><br><br> Что такое дуальное образование и чем оно лучше традиционного, основу экономики Миниполиса «Евро Таун», принципы работы Национальной ассоциации застройщиков, для чего нужна Национальная конная академия, что такое социально-частное партнерство и многое другое."/>
-
+    <cip-page-title title="Форум Cip Wiuim" />
+    <div class="q-mt-md">
+      <div v-html="homeData.forum_description"></div>
+    </div>
     <section class="q-mt-xl text-center">
       <h2 class="section-title">Темы форума</h2>
       <cip-forum-themes-grid :themes="fourThemes"/>
@@ -23,6 +23,9 @@ export default {
   computed: {
     fourThemes() {
       return this.$store.getters.getForumThemes
+    },
+    homeData () {
+      return this.$store.getters.getMainData.homeMeta
     }
   },
   preFetch({store}) {

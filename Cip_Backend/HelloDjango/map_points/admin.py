@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import MapPoint, Region, PointType, MapPointImage, MapPointVideo
+from .models import MapPoint, Region, PointType
 
 
 @admin.register(PointType)
@@ -35,19 +35,19 @@ class RegionAdmin(admin.ModelAdmin):
 
     get_region_points_count.short_description = 'Кол-во объектов'
 
-
-class MapPointImagesInline(admin.TabularInline):
-    model = MapPointImage
-    extra = 0
-    readonly_fields = ('get_image',)
-
-    def get_image(self, obj):
-        return mark_safe(f'<img src="{obj.image}" width="50"')
-
-
-class MapPointVideoInline(admin.TabularInline):
-    model = MapPointVideo
-    extra = 0
+#
+# class MapPointImagesInline(admin.TabularInline):
+#     model = MapPointImage
+#     extra = 0
+#     readonly_fields = ('get_image',)
+#
+#     def get_image(self, obj):
+#         return mark_safe(f'<img src="{obj.image}" width="50"')
+#
+#
+# class MapPointVideoInline(admin.TabularInline):
+#     model = MapPointVideo
+#     extra = 0
 
 
 @admin.register(MapPoint)
@@ -59,5 +59,5 @@ class MapPointAdmin(admin.ModelAdmin):
     save_on_top = True
     prepopulated_fields = {"slug": ("title",)}
     filter_horizontal = ('type',)
-    inlines = (MapPointImagesInline, MapPointImagesInline)
+    # inlines = (MapPointImagesInline, MapPointImagesInline)
 
